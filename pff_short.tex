@@ -118,9 +118,12 @@ Here is the abstract.
 
 \section{\label{s:intro}Introduction}
 
-CLIC is a proposal for a linear electron positron collider, using a novel two beam acceleration concept to achieve a collision energy of up to 3 TeV....
+CLIC is a proposal for a linear electron positron collider, using a novel two 
+beam acceleration concept to achieve a collision energy of up to 3 TeV....
 
 As part of this scheme strict requirements on the stability of the drive beam, including phase stability which must be better than 0.2 degrees at 12~GHz (or about 50 fs)...
+
+All phases quoted in this paper are in degrees at 12~GHz.
 
 Try to apply to XFELs/other applications that need high phase stability if possible...
 
@@ -128,26 +131,69 @@ Expected phase stability with no correction is 2 degrees. Phase feedforward syst
 
 Prototype of the system at the CLIC test facility CTF3...
 
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/ctfpffLayout}% Here is how to import EPS art
-\caption{\label{fig:pffLayout}Schematic of the PFF system at CTF3.}
-\end{figure}
-
 \section{\label{s:ctfLayout}System Design}
 
-The PFF system uses three phase monitors, a digitiser/feedforward controller and two electromagnetic kickers...
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figs/ctfpffLayout}% Here is how to 
+	%import EPS art
+	\caption{\label{fig:pffLayout}Schematic of the PFF system at CTF3.}
+\end{figure}
 
-Bunches arriving early at the first phase monitor are deflected on to longer trajectories in the chicane, bunches arriving late on to shorter trajectories...
+A schematic of the PFF system is shown in Fig.~\ref{fig:pffLayout}. The system 
+corrects the phase using two electromagnetic kickers installed 
+before the first and last dipole in a four bend chicane (in the TL2 transfer 
+line). The beam's path length 
+through the chicane depends on the magnitude and polarity of the voltage 
+applied to the kickers. The phase is measured using a monitor upstream of 
+the chicane (in the CT beam line), and then corrected by setting the kicker 
+voltage to deflect bunches arriving early at the phase monitor on to longer 
+trajectories in the chicane, and bunches arriving late on to shorter 
+trajectories. Downstream of the chicane, in the TBL line, another phase monitor 
+is placed to measure the effects of the correction.
+
+The beam time of flight between the upstream phase monitor and the first kicker 
+in the chicane is 380~ns. By bypassing the combiner ring (CR) and TL1 transfer 
+line, see Fig.~\ref{fig:pffLayout}, the total cable length required to 
+transport signals between the monitor and kickers is shorter, approximately 
+250~ns. The PFF correction in the chicane can therefore be applied to the same 
+bunch initially measured at the phase monitor, providing the total system 
+hardware latency is less than 130~ns. The system has a bandwidth of around 
+30~MHz, able to remove phase variations along the 1.2~\(\mu s\) CTF3 beam 
+pulse, as well as any offsets in the overall mean phase.
+
 
 \subsection{\label{ss:hardware}Hardware}
 
-Three phase monitor designed and built by INFN Frascati, and electronics by CERN. Resonant cavities. Signal vertical pair of feedthroughs summed in hybrid. Sum signal mixed with 12~GHz reference. Eight mixers used to achieve both good linearity and resolution. Best measured resolution is 0.126 degrees sampled at 192~MHz...
+The PFF system uses three phase monitors, two electromagnetic kickers, kicker 
+amplifiers and a digitiser/feedforward controller.
 
-Two electromagnetic kickers designed and built by INFN Frascati, based on DAFNE design. Horizontal deflection of 1~mrad for voltage of 1.26~kV applied to downstream end of each kicker strip (135~MeV beam)... 
+The three phase monitors are designed and built by INFN Frascati, with the 
+associated electronics built by CERN. The monitors are 12~GHz resonating 
+cavities with a dipole and monopole mode present. The output from opposing 
+vertical pairs of feedthroughs are summed in hybrids to create a position 
+independent signal. This signal is split and mixed with a reference 12~GHz 
+signal in eight separate mixers. The output from the eight mixers is combined, 
+allowing a resolution of 0.126 degrees to be 
+achieved whilst maintaining good linearity. This resolution is determined by 
+comparing the measurements of the two monitors installed in the CT line.
 
-Amplifier designed and built by John Adams Institue/Oxford University. For an input voltage of 2~V gives an output of up to 700~V. Response linear within 3\% for input voltages up to \(1.2\)~V, then starts to saturate. Bandwidth 47~MHz for small signal variations up to 20\% max output...
+The two electromagnetic kickers were also designed and built by INFN Frascati,  
+and are based on the DAFNE design. A voltage of 1.26~kV applied to the 
+downstream end of the kicker strips yields a horizontal deflection of 1~mrad 
+for the 135~MeV CTF3 beam.
 
-Feedforward digitiser and controller (FONT5a board) designed and built by John Adams Institute/Oxford University. 9 ADCs, FPGA, 4 DACs... Digitises output from phase monitor electronics, calculates amplifier output based on set gain values, deals with correction timing...
+The kicker amplifiers have been designed and built by the John Adams 
+Institue/Oxford University. For 
+an input voltage of 2~V gives an output of up to 700~V. Response linear within 
+3\% for input voltages up to \(1.2\)~V, then starts to saturate. Bandwidth 
+47~MHz for small signal variations up to 20\% max output...
+
+Finally, the Feedforward digitiser and controller (FONT5a board) was also 
+designed and built by John Adams Institute/Oxford University. This takes the 
+processed phase monitor signals then calculates and outputs the appropriate 
+voltage with which to drive the amplifier. 9 ADCs, FPGA, 4 DACs... Digitises 
+output from phase monitor electronics, calculates amplifier output based on set 
+gain values, deals with correction timing...
 
 \subsection{\label{ss:hardware}Optics}
 
