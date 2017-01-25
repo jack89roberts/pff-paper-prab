@@ -147,8 +147,8 @@ All phases quoted in the paper are given in degrees at 12~GHz.
 
 \section{\label{s:ctfLayout}System Design}
 
-\begin{figure}
-	\includegraphics[width=0.5\textwidth]{figs/ctfpffLayout}% Here is how to 
+\begin{figure*}
+	\includegraphics[width=\textwidth]{figs/ctfpffLayout}% Here is how to 
 	%import EPS art
 	\caption{\label{fig:pffLayout}Schematic of the PFF prototype at CTF3, 
 	showing the approximate location of the phase monitors (\(\phi_1\) , 
@@ -160,7 +160,7 @@ All phases quoted in the paper are given in degrees at 12~GHz.
 		chicane
 		using the kickers (blue trajectory), whereas a bunch arriving late will 
 		be directed on to a shorter path (red trajectory).}
-\end{figure}
+\end{figure*}
 
 A schematic of the PFF system is shown in Fig.~\ref{fig:pffLayout}. The system 
 corrects the phase using two electromagnetic kickers installed 
@@ -252,7 +252,8 @@ kickers...
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Orbit closure.}
+	\caption{\label{fig:orbClos}Orbit closure. Change x scale to metres. Error 
+	bars.}
 \end{figure}
 
 All this must be achieved whilst keeping dispersion low, matching betas etc. 
@@ -297,47 +298,73 @@ to be tolerated, as it was not possible to meet all constraints for the line...
 To compensate for the negative \(R_{56}\) in TL2, new sets of optics were 
 created with positive \(R_{56}\) in TL1...
 
+Figure R56...
+
 Higher order phase--energy dependencies and beam energy drifts at CTF3 
 nevertheless mean it is difficult to maintain high correlation between the 
 upstream and downstream phase on long timescales...
-
-Figure R56...
 
 \section{\label{s:results}Results}
 
 \subsection{\label{ss:gScan}Gain Scan}
 
+With the optimal gain the PFF correction acts to remove all correlation between 
+the upstream and downstream phase, reducing the downstream phase jitter. If the 
+gain is too small some residual correlation will remain, and if it is too large 
+the correlation will flip sign. 
 
-
-Would like new data here but would be nice to: have a scan with clear jitter vs. gain relationship (difficult because of propagation drifts). Otherwise, scatter plot like one I've included could be used to demonstrate effect...
+The optimal system gain can be derived empirically by observing the dependence 
+of the downstream phase on the upstream phase with the correction on, as seen 
+in Fig.~\ref{fig:gScan}.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/gScan}% Here is how to import EPS art
-\caption{\label{fig:gScan}Gain scan - NEED NEW DATA.}
+\caption{\label{fig:gScan}Gain scan - look for better data. And/or convert to 
+real gain from FONT gain.}
 \end{figure}
 
 
-\subsection{\label{ss:meanJit}Mean Jitter}
+\subsection{\label{ss:meanJit}Pulse-to-pulse Jitter}
 
-(General question: With/without wiggling, mean and point-by-point -- probably can't include all 4? Which to focus on? Need to at least quote lowest achieved jitter, but wiggling results can look more impressive in plots)
+The mean phase is defined as: mean phase across xxx~ns portion of pulse, for 
+each pulse.
 
-Achieved jitter on the mean phase of 0.24 degrees...
+Fig.~\ref{fig:meanJit} shows a ten minute dataset (xxx pulses), in which an 
+initial mean phase jitter of 0.92~degrees is reduced to 0.20~degrees by the PFF 
+correction. The system is operated in interleaved mode, with the correction 
+applied to alternating pulses, so that a measurement of the initial and 
+corrected downstream phase jitter can be performed at the same time.
 
-Consistent with theoretical value of (TO CALCULATE) given initial correlation, jitter in this dataset...
+All correlation between the upstream and downstream jitter is removed, from 
+96\% to 0\%. 
 
-Assuming 0.1 degrees resolution on mean (best achieved), measured jitter corresponds to actual beam jitter of 0.22 degrees...
+Across 20 minutes, 0.30 degrees phase jitter has been achieved.
+
+Best result:
+0.20 degrees across 10 minutes,
+Init jitter 0.92 degrees,
+Correlation 96\%.
+But this is better than theoretical limit: check correlation, bad pulse 
+removal etc.
+
+SIMULATED RESULTS
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_meanJit}% Here is how to import EPS art
-\caption{\label{fig:meanJit}Best mean phase jitter.}
+\caption{\label{fig:meanJit}Best mean phase jitter. 0.92 degrees to 0.20 
+degrees.}
 \end{figure}
 
 
-\subsection{\label{ss:shape}Pulse Shape}
+\subsection{\label{ss:shape}Intra-Pulse Phase Variations}
 
 High bandwidth correction - not only correcting the mean but also variations along the pulse...
 
-Peak-to-peak variation of 5.76 degrees in initial phase reduced to 0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced from 1.68 to 0.26 degrees...
+OLD VALUES: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
+0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
+from 1.68 to 0.26 degrees...). CALCULATE NEW VALUES.
+
+Histogram: improvement in flatness.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_shape}% Here is how to import EPS art
@@ -345,6 +372,9 @@ Peak-to-peak variation of 5.76 degrees in initial phase reduced to 0.65 degrees 
 \end{figure}
 
 \subsection{\label{ss:pbpJit}Point-by-point Jitter}
+
+I think this can probably be removed. I don't think it adds any 
+information beyond mean jitter and correction of shape.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_pbp}% Here is how to import EPS art
@@ -360,10 +390,23 @@ Limited by variations in phase propagation along the pulse (energy differences e
 
 \section{\label{s:conc}Conclusions}
 
-PFF prototype at CTF3 has demonstrated phase stability close to CLIC requirements...
+CLIC requires a PFF system to reduce the drive beam phase jitter by an order of 
+magnitude, from 2.0~degrees to 0.2~degrees. A prototype of the system has been 
+in operation at the CLIC test facility CTF3.
+
+The prototype has demonstrated 0.20~degree pulse-to-pulse phase jitter on a 
+time scale of ten minutes. 
+
+Intra-pulse phase variations are also greatly reduced by the PFF system...
+
+Drifts, in particular in beam energy, degrade the correlation between the 
+upstream and downstream phase and prevent this level of stability from being 
+demonstrated on longer time scales at CTF3. A key consideration for any future 
+system should be to design beam lines and optics with zero phase-energy 
+dependence, including non-linear dependencies, to solve this issue.
+
+Try to apply to XFELs/something else.
 
 \bibliography{apssamp}% Produces the bibliography via BibTeX.
 
 \end{document}
-%
-% ****** End of file apssamp.tex ******
