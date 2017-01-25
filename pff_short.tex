@@ -118,25 +118,48 @@ Here is the abstract.
 
 \section{\label{s:intro}Introduction}
 
-CLIC is a proposal for a linear electron positron collider, using a novel two 
-beam acceleration concept to achieve a collision energy of up to 3 TeV....
+CLIC is a proposal for a future linear electron positron collider that uses a 
+novel two 
+beam acceleration concept to achieve a high accelerating gradient of 100~MV/m 
+and a collision energy of up to 3 TeV. In this concept the 12~GHz RF power used 
+to accelerate the high energy colliding beams is extracted from high intensity 
+drive beams.
 
-As part of this scheme strict requirements on the stability of the drive beam, including phase stability which must be better than 0.2 degrees at 12~GHz (or about 50 fs)...
+CLIC's luminosity quickly drops if the RF phase jitters with respect to the 
+main beam, causing energy errors and subsequent beam size growth at the 
+interaction point. The RF phase 
+stability must be 0.2 degrees at 12~GHz or better to limit the luminosity loss 
+to below 1\%.  However, the expected phase stability of the drive beams is 2 
+degrees at 12~GHz. CLIC therefore requires a ``phase feedforward'' (PFF) 
+system, which will reduce the drive beam phase jitter (rms) by an order of 
+magnitude. XFELs have similar phase stability requirements [!!!???].
 
-All phases quoted in this paper are in degrees at 12~GHz.
+The PFF system poses many challenges, particularly in terms of the hardware 
+bandwidth, power and latency requirements. A prototype PFF system has therefore 
+been designed, commissioned and operated at the CLIC 
+test facility CTF3, at CERN to prove its feasibility. The prototype system 
+follows the same concept as the proposed CLIC scheme, and is the focus of this 
+work. 
 
-Try to apply to XFELs/other applications that need high phase stability if possible...
+CTF3: 135~MeV electron beam, 1.2~\(\mathrm{\mu}s\) beam pulse, 0.8~Hz.
 
-Expected phase stability with no correction is 2 degrees. Phase feedforward system proposed to reduce incoming phase jitter by an order of magnitude prior to power extraction...
-
-Prototype of the system at the CLIC test facility CTF3...
+All phases quoted in the paper are given in degrees at 12~GHz.
 
 \section{\label{s:ctfLayout}System Design}
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{figs/ctfpffLayout}% Here is how to 
 	%import EPS art
-	\caption{\label{fig:pffLayout}Schematic of the PFF system at CTF3.}
+	\caption{\label{fig:pffLayout}Schematic of the PFF prototype at CTF3, 
+	showing the approximate location of the phase monitors (\(\phi_1\) , 
+	\(\phi_2\) and \(\phi_3\)) and
+		the kickers (K1 and K2). The black box “PFF” represents the calculation 
+		and output of the correction, including the phase monitor
+		electronics, feedforward controller and kicker amplifiers. A bunch 
+		arriving early at \(\phi_1\) is directed on to a longer path in the TL2 
+		chicane
+		using the kickers (blue trajectory), whereas a bunch arriving late will 
+		be directed on to a shorter path (red trajectory).}
 \end{figure}
 
 A schematic of the PFF system is shown in Fig.~\ref{fig:pffLayout}. The system 
@@ -158,7 +181,8 @@ transport signals between the monitor and kickers is shorter, approximately
 250~ns. The PFF correction in the chicane can therefore be applied to the same 
 bunch initially measured at the phase monitor, providing the total system 
 hardware latency is less than 130~ns. The system has a bandwidth of around 
-30~MHz, able to remove phase variations along the 1.2~\(\mu s\) CTF3 beam 
+30~MHz, able to remove phase variations along the 1.2~\(\mathrm{\mu s}\) CTF3 
+beam 
 pulse, as well as any offsets in the overall mean phase.
 
 
@@ -195,41 +219,95 @@ voltage with which to drive the amplifier. 9 ADCs, FPGA, 4 DACs... Digitises
 output from phase monitor electronics, calculates amplifier output based on set 
 gain values, deals with correction timing...
 
-\subsection{\label{ss:hardware}Optics}
+The total latency of the phase monitor electronics, FONT5a board and amplifier 
+is approximately 100~ns...
 
-Two kickers are placed before first and last dipole in the chicane. Installed inside wide aperture quadrupoles to maintain functionality of the lattice...
+\subsection{\label{ss:optics}Chicane Optics}
 
-Key figure of merit for the PFF optics is the transfer matrix coefficient R52, which relates the applied kick to the resulting phase shift...
+The PFF system places additional constraints on the optics of the correction 
+chicane, and also on the beam lines between the upstream phase monitor and the 
+chicane. These constraints are needed to ensure a linear dependence of the 
+phase on the kicker voltage, to ensure the PFF system does not degrade the beam 
+orbit stability downstream of the chicane, and to ensure there is high 
+correlation between the initial (uncorrected) upstream and downstream phase.
 
-PFF system should not degrade transverse stability of beam after chicane. Can be achieved by requiring R11=-1 and R12=0 between kickers...
+The correction range of the PFF system is defined by the kicker design, the 
+maximum output voltage of the kicker amplifiers, and the optics transfer matrix 
+coefficient \(R_{52}\) between the kickers in the chicane. The coefficient 
+\(R_{52}\) describes the change in path length through the chicane per unit 
+deflection at the first kicker. The optics at CTF3 have \(R_{52} = 0.74\)~m and 
+at the maximum amplifier output 
+of \(\pm700\)~V the kickers deflect the beam through 0.56~mrad. Together these 
+define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or 
+\(\pm6\)~degrees, for the PFF 
+prototype.
 
-All this must be achieved whilst keeping dispersion low, matching betas etc. within constraints of pre-existing buildings. Achieved R52 0.74m with max dispersion 1.16m...
+Figure of correction range...
 
-But had to accept R56 of -0.18m. Means introduction of additional energy dependent jitter downstream not present upstream. PFF system (at CTF) requires residual R56 below 1cm to achieve 97\% correlation. Created new optics for TL1 line with varying R56, to control this effect...
-
-\subsection{\label{ss:commiss}Commissioning}
-
-(MIGHT BE BETTER TO MERGE POINTS HERE IN TO OTHER SECTIONS?)
-
-Correction range is 5.5 degrees, consistent with kicker design and amplifier output. Means only a portion of the CTF3 pulse can be corrected due to phase sag (or maybe could avoid this by only including central part of pulse in plots)...
-
-Beam time of flight 380~ns between first phase monitor and first kicker. Overall measured system latency is 350~ns, including all hardware and cables. Correct same bunch originally measured...
-
-(Need to) demonstrate that downstream orbit is independent of applied kick...
+PFF system should not degrade transverse stability of beam after chicane. The 
+purpose of the second kicker is to close the orbit bump created by the first 
+kicker, so that the downstream beam orbit is independent of the kicker voltage. 
+This can be achieved by requiring \(R_{11}=-1\) and \(R_{12}=0\) between the 
+kickers...
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/orbClos}% Here is how to import EPS art
-\caption{\label{fig:orbClos}Orbit closure.}
+	\includegraphics[width=0.5\textwidth]{figs/orbClos}
+	\caption{\label{fig:orbClos}Orbit closure.}
 \end{figure}
 
+All this must be achieved whilst keeping dispersion low, matching betas etc. 
+within constraints of pre-existing buildings. Achieved R52 0.74m with max 
+dispersion 1.16m...
+
+\subsection{\label{ss:r56} Correlation}
+
+The PFF system acts to subtract the measured upstream phase (\(\phi_u\)) from 
+the initial downstream phase (\(\phi_d\)) with a gain factor (\(g\)):
+%\begin{equation*}
+\(\phi_{\mathrm{PFF}} = \phi_d - g\phi_u\)
+%\end{equation*}
+, where \(\phi_{\mathrm{PFF}}\) is the corrected downstream phase. The optimal 
+system gain is given by:
+\(g = \rho_{ud} \sigma_d/\sigma_u\)
+, where \(\sigma_u\) and \(\sigma_d\) are the initial upstream and downstream 
+phase jitter respectively, and \(\rho_{ud}\) is the correlation between the 
+upstream and downstream phase. The theoretical limit on the corrected 
+downstream phase jitter (\(\sigma_{\mathrm{PFF}}\)), with this gain is given by:
+\(\sigma_{\mathrm{PFF}}=\sigma_d \sqrt{1-\rho_{ud}^2}\). 
+
+One of the key challenges in operating the PFF prototype at CTF3 has been 
+obtaining high correlation between the initial, uncorrected, upstream and 
+downstream phase. A correlation of 97\% is required to reduce a typical initial 
+phase jitter of \(0.8\)~degrees to the target of \(0.2\)~degrees. Early 
+measurements showed only 40\% correlation.
+
+The source of low correlation was discovered to be energy dependent phase 
+jitter introduced between the upstream and downstream phase monitors. This is 
+described via the optics transfer matrix coefficient \(R_{56}\):
+\(\phi_d = \phi_u + R_{56}(\Delta p / p)\)
+, where \(\Delta p / p\) is the relative beam energy offset.
+
+Correlation vs. R56 equation?...
+
+The PFF system requires \(R_{56}\) to be zero between the upstream and 
+downstream phase monitors. All beam lines at CTF3 are nominally \(R_{56}=0\), 
+but in the new PFF optics for the TL2 chicane a value of \(R_{56}=-0.18\)~m had 
+to be tolerated, as it was not possible to meet all constraints for the line...
+
+To compensate for the negative \(R_{56}\) in TL2, new sets of optics were 
+created with positive \(R_{56}\) in TL1...
+
+Higher order phase--energy dependencies and beam energy drifts at CTF3 
+nevertheless mean it is difficult to maintain high correlation between the 
+upstream and downstream phase on long timescales...
+
+Figure R56...
 
 \section{\label{s:results}Results}
 
 \subsection{\label{ss:gScan}Gain Scan}
 
-Theoretical limit on the corrected jitter is \(\sigma_d \sqrt{1-\rho_{ud}^2}\)...
 
-Optimal gain value is \(g = \rho \sigma_d/\sigma_u\)...
 
 Would like new data here but would be nice to: have a scan with clear jitter vs. gain relationship (difficult because of propagation drifts). Otherwise, scatter plot like one I've included could be used to demonstrate effect...
 
