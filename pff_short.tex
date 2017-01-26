@@ -325,7 +325,7 @@ in Fig.~\ref{fig:gScan}.
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/gScan}% Here is how to import EPS art
 \caption{\label{fig:gScan}Gain scan. \textcolor{red}{Look for better data. 
-And/or convert to real gain from FONT gain.}}
+And convert to real gain from FONT gain.}}
 \end{figure}
 
 
@@ -354,7 +354,8 @@ PFF on.
 
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/BestFF_meanJit}% Here is how to import EPS art
+\includegraphics[width=0.5\textwidth]{figs/meanJit}% Here is how to import EPS 
+%art
 \caption{\label{fig:meanJit}Best mean phase jitter. 0.92 degrees to 0.20 
 degrees.}
 \end{figure}
@@ -367,32 +368,46 @@ along the pulse...
 
 OLD VALUES: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
 0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
-from 1.68 to 0.26 degrees...). Current figure is worse.
+from 1.68 to 0.26 degrees...). Current figure is worse, but more small features 
+removed.
 
-Histogram: improvement in flatness.
+NEW VALUES: Std \(0.960\pm0.003^\circ\) reduced to \(0.285\pm0.004^\circ\). 
+Sample 600 to 755.
+
+Fig. improvement in shape...
+
+Fig. improvement in flatness...
+
+Limited by variations in phase propagation along the pulse (energy differences 
+etc.), plus resolution slightly worse for point by point than for mean.
+
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/BestFF_shape}% Here is how to import EPS art
-\caption{\label{fig:shape}Correction of pulse shape - look for better data.}
+\includegraphics[width=0.5\textwidth]{figs/shape}% Here is how to import EPS art
+\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{Add sample 
+range or change axis limit}}
 \end{figure}
-
-\subsection{\label{ss:pbpJit}Point-by-point Jitter}
-
-\textcolor{red}{I think this can probably be removed. Not sure it adds any 
-information beyond mean jitter and correction of shape. Would remove this 
-section, replace plot with histogram of improvement in shape.}
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/BestFF_pbp}% Here is how to import EPS art
-\caption{\label{fig:BestFF_pbp}Point-by-point jitter.}
+	\includegraphics[width=0.5\textwidth]{figs/flatness}% Here is how to import 
+	%EPS art
+	\caption{\label{fig:flatness}Pulse flatness. \textcolor{red}{Maybe play 
+	with sample range to try to get more gaussian PFF on distribution}}
 \end{figure}
 
-
-Point-by-point jitter of x~degrees achieved across a x~ns portion of the pulse, agrees with simulated value...
-
-Limited by variations in phase propagation along the pulse (energy differences etc.), plus resolution slightly worse for point by point than for mean.
-
-
+%\subsection{\label{ss:pbpJit}Point-by-point Jitter}
+%
+%\textcolor{red}{I would remove this. Don't think it adds any 
+%information beyond mean jitter and correction of shape.}
+%
+%\begin{figure}
+%\includegraphics[width=0.5\textwidth]{figs/BestFF_pbp}% Here is how to import 
+%%%%EPS art
+%\caption{\label{fig:BestFF_pbp}Point-by-point jitter.}
+%\end{figure}
+%
+%Point-by-point jitter of x~degrees achieved across a x~ns portion of the 
+%pulse, agrees with simulated value...
 
 \section{\label{s:conc}Conclusions}
 
