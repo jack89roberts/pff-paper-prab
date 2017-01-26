@@ -43,6 +43,7 @@
 \usepackage{graphicx}% Include figure files
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
+\usepackage{color}
 %\usepackage{hyperref}% add hypertext capabilities
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
@@ -57,43 +58,31 @@
 
 \begin{document}
 
-\preprint{APS/123-QED}
+%\preprint{APS/123-QED}
 
-\title{Demonstration of 50~fs stability of an \\ electron beam at the CLIC Test Facility CTF3}% Force line breaks with \\
+\title{Demonstration of 50~fs stability of an \\ electron beam at the CLIC Test 
+Facility CTF3}
 %\thanks{A footnote to the article title}%
 
 \author{J.~Roberts}
- \altaffiliation[Also at ]{JAI, Oxford University.}%Lines break automatically or can be forced with \\
- \email{Jack.Roberts@cern.ch}
-\author{R.~Corsini}
-\author{P.~Skowronski}%
-\affiliation{%
- CERN, Geneva
-}%
-
-\collaboration{CTF3 Collaboration}%\noaffiliation
-
+\altaffiliation[Also at ]{CERN, Geneva.}
+\email{Jack.Roberts@cern.ch}
 \author{P.~Burrows}
 \author{G.~Christian}
 \author{C.~Perry}
-% \homepage{http://www.Second.institution.edu/~Charlie.Author}
-\affiliation{
- John Adams Institute\\
- Oxford University% with \\
-}%
-%\affiliation{
-% Third institution, the second for Charlie Author
-%}%
-%\author{Delta Author}
-%\affiliation{%
-% Authors' institution and/or address\\
-% This line break forced with \textbackslash\textbackslash
-%}%
-
+\affiliation{John Adams Institute\\University of Oxford}
 \collaboration{FONT Group}%\noaffiliation
 
-\date{\today}% It is always \today, today,
-             %  but any date may be explicitly specified
+\author{R.~Corsini}
+\author{P.~Skowronski}
+\affiliation{CERN, Geneva}
+\collaboration{CTF3 Collaboration}%\noaffiliation
+
+\author{A.~Ghigo}
+\author{F.~Marcellini}
+\affiliation{INFN/LNF, Frascati}
+
+\date{\today}
 
 \begin{abstract}
 Here is the abstract.
@@ -159,7 +148,8 @@ All phases quoted in the paper are given in degrees at 12~GHz.
 		arriving early at \(\phi_1\) is directed on to a longer path in the TL2 
 		chicane
 		using the kickers (blue trajectory), whereas a bunch arriving late will 
-		be directed on to a shorter path (red trajectory).}
+		be directed on to a shorter path (red trajectory). 
+		\textcolor{red}{Maybe add upstream/downstream labels to phase monitors}}
 \end{figure*}
 
 A schematic of the PFF system is shown in Fig.~\ref{fig:pffLayout}. The system 
@@ -242,7 +232,12 @@ define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or
 \(\pm6\)~degrees, for the PFF 
 prototype.
 
-Figure of correction range...
+Fig. correction range...
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figs/corrRange}
+	\caption{\label{fig:corrRange}Correction range.}
+\end{figure}
 
 PFF system should not degrade transverse stability of beam after chicane. The 
 purpose of the second kicker is to close the orbit bump created by the first 
@@ -252,8 +247,10 @@ kickers...
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Orbit closure. Change x scale to metres. Error 
-	bars.}
+	\caption{\label{fig:orbClos}Orbit closure. \textcolor{red}{Maybe: Replace 
+	lines with model 
+	prediction, add lines to indicate kicker positions, remove -2 V 
+	line}}
 \end{figure}
 
 All this must be achieved whilst keeping dispersion low, matching betas etc. 
@@ -291,7 +288,7 @@ described via the optics transfer matrix coefficient \(R_{56}\):
 Correlation vs. R56 equation?...
 
 The PFF system requires \(R_{56}\) to be zero between the upstream and 
-downstream phase monitors. All beam lines at CTF3 are nominally \(R_{56}=0\), 
+downstream phase monitors. All beam lines at CTF3 were nominally \(R_{56}=0\), 
 but in the new PFF optics for the TL2 chicane a value of \(R_{56}=-0.18\)~m had 
 to be tolerated, as it was not possible to meet all constraints for the line...
 
@@ -299,6 +296,14 @@ To compensate for the negative \(R_{56}\) in TL2, new sets of optics were
 created with positive \(R_{56}\) in TL1...
 
 Figure R56...
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figs/r56Scan}% Here is how to import 
+	%EPS art
+	\caption{\label{fig:r56Scan}R56 scan. \textcolor{red}{Maybe remove 
+	upstream jitter.}}
+\end{figure}
+
 
 Higher order phase--energy dependencies and beam energy drifts at CTF3 
 nevertheless mean it is difficult to maintain high correlation between the 
@@ -319,8 +324,8 @@ in Fig.~\ref{fig:gScan}.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/gScan}% Here is how to import EPS art
-\caption{\label{fig:gScan}Gain scan - look for better data. And/or convert to 
-real gain from FONT gain.}
+\caption{\label{fig:gScan}Gain scan. \textcolor{red}{Look for better data. 
+And/or convert to real gain from FONT gain.}}
 \end{figure}
 
 
@@ -341,13 +346,12 @@ All correlation between the upstream and downstream jitter is removed, from
 Across 20 minutes, 0.30 degrees phase jitter has been achieved.
 
 Best result:
-0.20 degrees across 10 minutes,
-Init jitter 0.92 degrees,
-Correlation 96\%.
-But this is better than theoretical limit: check correlation, bad pulse 
-removal etc.
+\(0.92\pm0.04^\circ\) to \(0.20\pm0.01^\circ\)  across 10 minutes,
+Correlation \(96\pm2\%\) to \(0\pm7\%\),
+Theoretical limit: \(0.26\pm0.06^\circ\),
+NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
+PFF on.
 
-SIMULATED RESULTS
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_meanJit}% Here is how to import EPS art
@@ -358,23 +362,25 @@ degrees.}
 
 \subsection{\label{ss:shape}Intra-Pulse Phase Variations}
 
-High bandwidth correction - not only correcting the mean but also variations along the pulse...
+High bandwidth correction - not only correcting the mean but also variations 
+along the pulse...
 
 OLD VALUES: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
 0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
-from 1.68 to 0.26 degrees...). CALCULATE NEW VALUES.
+from 1.68 to 0.26 degrees...). Current figure is worse.
 
 Histogram: improvement in flatness.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_shape}% Here is how to import EPS art
-\caption{\label{fig:shape}Correction of pulse shape.}
+\caption{\label{fig:shape}Correction of pulse shape - look for better data.}
 \end{figure}
 
 \subsection{\label{ss:pbpJit}Point-by-point Jitter}
 
-I think this can probably be removed. I don't think it adds any 
-information beyond mean jitter and correction of shape.
+\textcolor{red}{I think this can probably be removed. Not sure it adds any 
+information beyond mean jitter and correction of shape. Would remove this 
+section, replace plot with histogram of improvement in shape.}
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figs/BestFF_pbp}% Here is how to import EPS art
@@ -394,8 +400,8 @@ CLIC requires a PFF system to reduce the drive beam phase jitter by an order of
 magnitude, from 2.0~degrees to 0.2~degrees. A prototype of the system has been 
 in operation at the CLIC test facility CTF3.
 
-The prototype has demonstrated 0.20~degree pulse-to-pulse phase jitter on a 
-time scale of ten minutes. 
+The prototype has demonstrated \(0.20\pm0.01^\circ\) pulse-to-pulse 
+phase jitter on a time scale of ten minutes. 
 
 Intra-pulse phase variations are also greatly reduced by the PFF system...
 
