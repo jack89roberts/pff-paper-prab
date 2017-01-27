@@ -117,11 +117,11 @@ drive beams.
 CLIC's luminosity quickly drops if the RF phase jitters with respect to the 
 main beam, causing energy errors and subsequent beam size growth at the 
 interaction point. The RF phase 
-stability must be 0.2 degrees at 12~GHz or better to limit the luminosity loss 
+stability must be 0.2 degrees at 12~GHz (around 50~fs) or better to limit the luminosity loss 
 to below 1\%.  However, the expected phase stability of the drive beams is 2 
 degrees at 12~GHz. CLIC therefore requires a ``phase feedforward'' (PFF) 
 system, which will reduce the drive beam phase jitter (rms) by an order of 
-magnitude. XFELs have similar phase stability requirements [!!!???].
+magnitude. \textcolor{red}{XFELs have similar phase stability requirements [!!!???].}
 
 The PFF system poses many challenges, particularly in terms of the hardware 
 bandwidth, power and latency requirements. A prototype PFF system has therefore 
@@ -130,7 +130,7 @@ test facility CTF3, at CERN to prove its feasibility. The prototype system
 follows the same concept as the proposed CLIC scheme, and is the focus of this 
 work. 
 
-CTF3: 135~MeV electron beam, 1.2~\(\mathrm{\mu}s\) beam pulse, 0.8~Hz.
+\textcolor{red}{CTF3: 135~MeV electron beam, 1.2~\(\mathrm{\mu}s\) beam pulse, 0.8~Hz.}
 
 All phases quoted in the paper are given in degrees at 12~GHz.
 
@@ -170,10 +170,12 @@ line, see Fig.~\ref{fig:pffLayout}, the total cable length required to
 transport signals between the monitor and kickers is shorter, approximately 
 250~ns. The PFF correction in the chicane can therefore be applied to the same 
 bunch initially measured at the phase monitor, providing the total system 
-hardware latency is less than 130~ns. The system has a bandwidth of around 
+hardware latency is less than 130~ns. 
+
+\textcolor{red}{The system has a bandwidth of around 
 30~MHz, able to remove phase variations along the 1.2~\(\mathrm{\mu s}\) CTF3 
 beam 
-pulse, as well as any offsets in the overall mean phase.
+pulse, as well as any offsets in the overall mean phase.}
 
 
 \subsection{\label{ss:hardware}Hardware}
@@ -232,10 +234,12 @@ define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or
 \(\pm6\)~degrees, for the PFF 
 prototype.
 
+\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and phase.}
+
 Fig. correction range...
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figs/corrRange}
+	\includegraphics[width=\columnwidth]{figs/corrRange}
 	\caption{\label{fig:corrRange}Correction range.}
 \end{figure}
 
@@ -246,18 +250,18 @@ This can be achieved by requiring \(R_{11}=-1\) and \(R_{12}=0\) between the
 kickers...
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figs/orbClos}
+	\includegraphics[width=\columnwidth]{figs/orbClos}
 	\caption{\label{fig:orbClos}Orbit closure. \textcolor{red}{Maybe: Replace 
 	lines with model 
 	prediction, add lines to indicate kicker positions, remove -2 V 
 	line}}
 \end{figure}
 
-All this must be achieved whilst keeping dispersion low, matching betas etc. 
+\textcolor{red}{All this must be achieved whilst keeping dispersion low, matching betas etc. 
 within constraints of pre-existing buildings. Achieved R52 0.74m with max 
-dispersion 1.16m...
+dispersion 1.16m...}
 
-\subsection{\label{ss:r56} Correlation}
+\subsection{\label{ss:r56} Phase Propagation}
 
 The PFF system acts to subtract the measured upstream phase (\(\phi_u\)) from 
 the initial downstream phase (\(\phi_d\)) with a gain factor (\(g\)):
@@ -270,44 +274,38 @@ system gain is given by:
 , where \(\sigma_u\) and \(\sigma_d\) are the initial upstream and downstream 
 phase jitter respectively, and \(\rho_{ud}\) is the correlation between the 
 upstream and downstream phase. The theoretical limit on the corrected 
-downstream phase jitter (\(\sigma_{\mathrm{PFF}}\)), with this gain is given by:
+downstream phase jitter (\(\sigma_{\mathrm{PFF}}\)) with this gain is given by:
 \(\sigma_{\mathrm{PFF}}=\sigma_d \sqrt{1-\rho_{ud}^2}\). 
 
 One of the key challenges in operating the PFF prototype at CTF3 has been 
 obtaining high correlation between the initial, uncorrected, upstream and 
 downstream phase. A correlation of 97\% is required to reduce a typical initial 
 phase jitter of \(0.8\)~degrees to the target of \(0.2\)~degrees. Early 
-measurements showed only 40\% correlation.
+measurements showed below 40\% correlation, and typically a factor 3 increase in the downstream phase jitter with respect to the upstream jitter.
 
-The source of low correlation was discovered to be energy dependent phase 
+The source of low correlation and jitter amplification was discovered to be energy dependent phase 
 jitter introduced between the upstream and downstream phase monitors. This is 
 described via the optics transfer matrix coefficient \(R_{56}\):
 \(\phi_d = \phi_u + R_{56}(\Delta p / p)\)
 , where \(\Delta p / p\) is the relative beam energy offset.
 
-Correlation vs. R56 equation?...
+\textcolor{red}{Correlation or jitter vs. R56 equation?...}
 
-The PFF system requires \(R_{56}\) to be zero between the upstream and 
-downstream phase monitors. All beam lines at CTF3 were nominally \(R_{56}=0\), 
-but in the new PFF optics for the TL2 chicane a value of \(R_{56}=-0.18\)~m had 
-to be tolerated, as it was not possible to meet all constraints for the line...
+To achieve high upstream-downstream phase correlation the PFF system requires \(R_{56}\) to be zero between the upstream and 
+downstream phase monitors.
 
-To compensate for the negative \(R_{56}\) in TL2, new sets of optics were 
-created with positive \(R_{56}\) in TL1...
+The phase propagation has therefore been optimised by creating new optics for the transfer line TL1 (see Fig.~\ref{fig:pffLayout}) with \(R_{56}\) values ranging between -30~cm and +60~cm in 0.5~cm increments. TL1 can then be used to compensate for the non-zero \(R_{56}\) values in other beam lines, with the dominant contribution being from the TL2 chicane. In other words, TL1 is tuned such that \(R_{56}(\mathrm{TL1}) = -R_{56}(\mathrm{TL2})\).
 
-Figure R56...
+Fig.~\ref{fig:r56Scan} shows the effect of varying the \(R_{56}\) value in TL1 on the downstream phase jitter. With an \(R_{56}\) of around 10~cm in TL1 the downstream phase jitter is reduced to the same level as the upstream jitter, as desired. The upstream-downstream phase correlation is also increased in these conditions, with correlations above 95\% achieved.
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figs/r56Scan}% Here is how to import 
+	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
 	%EPS art
 	\caption{\label{fig:r56Scan}R56 scan. \textcolor{red}{Maybe remove 
-	upstream jitter.}}
+	upstream jitter, or replace with a single value line.}}
 \end{figure}
 
-
-Higher order phase--energy dependencies and beam energy drifts at CTF3 
-nevertheless mean it is difficult to maintain high correlation between the 
-upstream and downstream phase on long timescales...
+In this way the necessary initial conditions for the PFF correction were obtained at CTF3. However, the phase propagation is also sensitive to higher order phase--energy dependencies and beam energy drifts. These lead to apparent drifts in the optimal set point for \(R_{56}\) in TL1 and have made it difficult to maintain high correlation between the upstream and downstream phase on long timescales.
 
 \section{\label{s:results}Results}
 
@@ -323,9 +321,43 @@ of the downstream phase on the upstream phase with the correction on, as seen
 in Fig.~\ref{fig:gScan}.
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/gScan}% Here is how to import EPS art
-\caption{\label{fig:gScan}Gain scan. \textcolor{red}{Look for better data. 
-And convert to real gain from FONT gain.}}
+\includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
+\caption{\label{fig:gScan}Gain scan.}
+\end{figure}
+
+\subsection{\label{ss:shape}Intra-Pulse Phase Variations}
+
+The system is operated in interleaved mode, with the correction 
+applied to alternating pulses, so that a measurement of the initial and 
+corrected downstream phase jitter can be performed at the same time.
+
+High bandwidth correction - not only correcting the mean but also variations 
+along the pulse...
+
+2015: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
+0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
+from 1.68 to 0.26 degrees...).
+
+2016: Std \(0.960\pm0.003^\circ\) reduced to \(0.285\pm0.004^\circ\) across 440~ns portion of pulse. Worse absolute but better removal small features compared to 2015.
+
+Fig. improvement in shape... where corrected phase not flat corresponds to where there are differences between upstream and downstream phase...
+
+Fig. improvement in flatness...
+
+Limited by variations in phase propagation along the pulse (energy differences 
+etc.).
+
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS art
+	\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{Only show sample range?}}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/flatness}% Here is how to import 
+	%EPS art
+	\caption{\label{fig:flatness}Pulse flatness. \textcolor{red}{Maybe play 
+			with sample range to try to get more gaussian PFF on distribution}}
 \end{figure}
 
 
@@ -334,66 +366,26 @@ And convert to real gain from FONT gain.}}
 The mean phase is defined as: mean phase across xxx~ns portion of pulse, for 
 each pulse.
 
-Fig.~\ref{fig:meanJit} shows a ten minute dataset (xxx pulses), in which an 
-initial mean phase jitter of 0.92~degrees is reduced to 0.20~degrees by the PFF 
-correction. The system is operated in interleaved mode, with the correction 
-applied to alternating pulses, so that a measurement of the initial and 
-corrected downstream phase jitter can be performed at the same time.
+Fig.~\ref{fig:meanJit} shows downstream phase distributions across a dataset around ten minutes in length (482~pulses). An 
+initial mean downstream phase jitter of \(0.92\pm0.04^\circ\) is reduced to \(0.20\pm0.01^\circ\) by the PFF 
+correction. All correlation between the upstream and downstream jitter is removed, from 
+\(96\pm2\%\) to \(0\pm7\%\). The achieved stability is in agreement with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
 
-All correlation between the upstream and downstream jitter is removed, from 
-96\% to 0\%. 
+\textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
+PFF on. Helps to explain why achieved is better than predicted.}
 
-Across 20 minutes, 0.30 degrees phase jitter has been achieved.
+This represents the longest time period during which the target CLIC phase stability has been achieved with the prototype. 0.30 degrees phase jitter has been achieved in 20 minute datasets.
 
-Best result:
-\(0.92\pm0.04^\circ\) to \(0.20\pm0.01^\circ\)  across 10 minutes,
-Correlation \(96\pm2\%\) to \(0\pm7\%\),
-Theoretical limit: \(0.26\pm0.06^\circ\),
-NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
-PFF on.
-
+\textcolor{red}{Result with wiggling?}
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/meanJit}% Here is how to import EPS 
+\includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import EPS 
 %art
 \caption{\label{fig:meanJit}Best mean phase jitter. 0.92 degrees to 0.20 
-degrees.}
+degrees. \textcolor{red}{The mean is shifted by xxx degrees...}}
 \end{figure}
 
 
-\subsection{\label{ss:shape}Intra-Pulse Phase Variations}
-
-High bandwidth correction - not only correcting the mean but also variations 
-along the pulse...
-
-OLD VALUES: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
-0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
-from 1.68 to 0.26 degrees...). Current figure is worse, but more small features 
-removed.
-
-NEW VALUES: Std \(0.960\pm0.003^\circ\) reduced to \(0.285\pm0.004^\circ\). 
-Sample 600 to 755.
-
-Fig. improvement in shape...
-
-Fig. improvement in flatness...
-
-Limited by variations in phase propagation along the pulse (energy differences 
-etc.), plus resolution slightly worse for point by point than for mean.
-
-
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{figs/shape}% Here is how to import EPS art
-\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{Add sample 
-range or change axis limit}}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=0.5\textwidth]{figs/flatness}% Here is how to import 
-	%EPS art
-	\caption{\label{fig:flatness}Pulse flatness. \textcolor{red}{Maybe play 
-	with sample range to try to get more gaussian PFF on distribution}}
-\end{figure}
 
 %\subsection{\label{ss:pbpJit}Point-by-point Jitter}
 %
@@ -401,7 +393,7 @@ range or change axis limit}}
 %information beyond mean jitter and correction of shape.}
 %
 %\begin{figure}
-%\includegraphics[width=0.5\textwidth]{figs/BestFF_pbp}% Here is how to import 
+%\includegraphics[width=\columnwidth]{figs/BestFF_pbp}% Here is how to import 
 %%%%EPS art
 %\caption{\label{fig:BestFF_pbp}Point-by-point jitter.}
 %\end{figure}
