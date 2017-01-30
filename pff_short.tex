@@ -31,7 +31,8 @@
 %nobibnotes,
 %bibnotes,
  amsmath,amssymb,
- aps,
+ prl,
+% aps,
 %pra,
 %prb,
 %rmp,
@@ -166,7 +167,7 @@ is placed to measure the effects of the correction.
 
 The beam time of flight between the upstream phase monitor and the first kicker 
 in the chicane is 380~ns. By bypassing the combiner ring (CR) and TL1 transfer 
-line, see Fig.~\ref{fig:pffLayout}, the total cable length required to 
+line (see Fig.~\ref{fig:pffLayout}) the total cable length required to 
 transport signals between the monitor and kickers is shorter, approximately 
 250~ns. The PFF correction in the chicane can therefore be applied to the same 
 bunch initially measured at the phase monitor, providing the total system 
@@ -212,7 +213,7 @@ output from phase monitor electronics, calculates amplifier output based on set
 gain values, deals with correction timing...
 
 The total latency of the phase monitor electronics, FONT5a board and amplifier 
-is approximately 100~ns...
+is approximately 100~ns... \textcolor{red}{Mention timing setup}.
 
 \subsection{\label{ss:optics}Chicane Optics}
 
@@ -234,20 +235,29 @@ define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or
 \(\pm6\)~degrees, for the PFF 
 prototype.
 
-\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and phase.}
+The measured phase shift in the chicane versus the amplifier input voltage is 
+shown in Fig.~\ref{fig:corrRange}, and agrees with the predicted range given 
+the hardware and optics parameters. However, the output of the amplifier is 
+non-linear for input voltages above 1.2~V (with a maximum input of 2~V). The 
+linear range of the PFF system is therefore closer to \(\pm4^\circ\).
 
-Fig. correction range...
+\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and 
+phase.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/corrRange}
 	\caption{\label{fig:corrRange}Correction range.}
 \end{figure}
 
-PFF system should not degrade transverse stability of beam after chicane. The 
-purpose of the second kicker is to close the orbit bump created by the first 
-kicker, so that the downstream beam orbit is independent of the kicker voltage. 
-This can be achieved by requiring \(R_{11}=-1\) and \(R_{12}=0\) between the 
-kickers...
+The PFF system also should not degrade transverse stability of beam after 
+chicane. The purpose of the second kicker is to close the orbit bump created by 
+the first kicker, so that the downstream beam orbit is independent of the 
+kicker voltage. In terms of optics tranfer matrix coefficients this can be 
+achieved by requiring \(R_{11}=-1\) and \(R_{12}=0\) between the 
+kickers. Fig.~\ref{fig:orbClos} shows the horizontal beam orbit before, in and 
+after the TL2 chicane for the maximum and minimum applied kick. The closure in 
+the BPMs following the chicane is better than 0.1~mm, compared to a maximum 
+offset of 1.5~mm inside the chicane.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/orbClos}
@@ -305,7 +315,12 @@ Fig.~\ref{fig:r56Scan} shows the effect of varying the \(R_{56}\) value in TL1 o
 	upstream jitter, or replace with a single value line.}}
 \end{figure}
 
-In this way the necessary initial conditions for the PFF correction were obtained at CTF3. However, the phase propagation is also sensitive to higher order phase--energy dependencies and beam energy drifts. These lead to apparent drifts in the optimal set point for \(R_{56}\) in TL1 and have made it difficult to maintain high correlation between the upstream and downstream phase on long timescales.
+In this way the necessary initial conditions for the PFF correction were 
+obtained at CTF3. However, the phase propagation is also sensitive to higher 
+order phase--energy dependencies and therefore beam energy drifts. These lead 
+to apparent drifts in the optimal set point for \(R_{56}\) in TL1 and have made 
+it difficult to maintain high correlation between the upstream and downstream 
+phase on long timescales.
 
 \section{\label{s:results}Results}
 
@@ -318,7 +333,10 @@ the correlation will flip sign.
 
 The optimal system gain can be derived empirically by observing the dependence 
 of the downstream phase on the upstream phase with the correction on, as seen 
-in Fig.~\ref{fig:gScan}.
+in Fig.~\ref{fig:gScan}. Optimal gain values for the system are typically in 
+the range 1.0--1.5, being larger than unity when the downstream jitter is 
+larger than upstream \textcolor{red}{as per Equation xxx (but would prefer to 
+leave that equation in-line without a number)}. 
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
@@ -327,56 +345,78 @@ in Fig.~\ref{fig:gScan}.
 
 \subsection{\label{ss:shape}Intra-Pulse Phase Variations}
 
-The system is operated in interleaved mode, with the correction 
-applied to alternating pulses, so that a measurement of the initial and 
-corrected downstream phase jitter can be performed at the same time.
+The PFF correction is shaped to remove phase variations along the 
+1.2~\(\mathrm{\mu s}\) CTF3 beam pulse. The predominant intra-pulse feature at 
+is a roughly parabolic ``phase sag'' of \(40^\circ\) peak-to-peak, resulting 
+from the RF pulse compression system at CTF3. As this is much larger than the 
+\(\pm 6^\circ\) range of the PFF system, only approximately a 400~ns portion of 
+the pulse can be optimally corrected. The phase sag would not be present at 
+CLIC, where in any case the drive beam pulse length is less than 400~ns.
 
-High bandwidth correction - not only correcting the mean but also variations 
-along the pulse...
+%2015: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
+%0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
+%from 1.68 to 0.26 degrees...).
 
-2015: (Peak-to-peak variation of 5.76 degrees in initial phase reduced to 
-0.65 degrees in corrected phase -- OR -- standard deviation of phases reduced 
-from 1.68 to 0.26 degrees...).
+%2016: Std \(0.960\pm0.003^\circ\) reduced to \(0.285\pm0.004^\circ\) across 
+%440~ns portion of pulse. Worse absolute but better removal small features 
+%compared to 2015.
 
-2016: Std \(0.960\pm0.003^\circ\) reduced to \(0.285\pm0.004^\circ\) across 440~ns portion of pulse. Worse absolute but better removal small features compared to 2015.
+Fig.~\ref{fig:shape} shows the effect of the PFF system on the intra-pulse 
+phase variations. The convention at CTF3 is to operate the PFF system in 
+interleaved mode, with 
+the correction applied to alternating pulses only. This allows a measurement of 
+the initial (`PFF Off') and corrected (`PFF On') downstream phase to be 
+performed concurrently. The upstream (PFF input) phase is also shown for 
+comparison. Vertical dashed lines mark a 440~ns portion of the pulse where the 
+correction is optimal, and this range is used to calculate statistics on the 
+effect of the system. In this range the PFF system flattens the phase, 
+and almost all variations are removed. Residual offsets in the phase are still 
+present where there are small uncorrelated differences between the shape of the 
+initial upstream and downstream phase.
 
-Fig. improvement in shape... where corrected phase not flat corresponds to where there are differences between upstream and downstream phase...
+Fig.~\ref{fig:flatness} shows the rms phase variation within the 440~ns range 
+for each beam pulse in the dataset, with the PFF system on and off. The PFF off 
+pulses have an rms of \(0.960\pm0.003^\circ\) on average, and this is reduced 
+to \(0.285\pm0.004^\circ\) by the PFF system.
 
-Fig. improvement in flatness...
 
-Limited by variations in phase propagation along the pulse (energy differences 
-etc.).
+%Limited by variations in phase propagation along the pulse (energy differences 
+%etc.).
 
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS art
-	\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{Only show sample range?}}
+	\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{NB: 
+	2015 showed larger reduction in flatness, flatter corrected phase, but no 
+	wiggles in initial upstream phase.}}
 \end{figure}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/flatness}% Here is how to import 
 	%EPS art
-	\caption{\label{fig:flatness}Pulse flatness. \textcolor{red}{Maybe play 
-			with sample range to try to get more gaussian PFF on distribution}}
+	\caption{\label{fig:flatness}Pulse flatness.}
 \end{figure}
 
 
 \subsection{\label{ss:meanJit}Pulse-to-pulse Jitter}
 
-The mean phase is defined as: mean phase across xxx~ns portion of pulse, for 
-each pulse.
+As well as removing intra-pulse phase variations the PFF system simultaneously 
+corrects offsets in the overall mean phase, i.e. any pulse-to-pulse jitter. The 
+mean phase of each beam pulse is calculated across the 440~ns range in the 
+central portion of the pulse, as shown before in Fig.~\ref{fig:shape}.
 
-Fig.~\ref{fig:meanJit} shows downstream phase distributions across a dataset around ten minutes in length (482~pulses). An 
+Fig.~\ref{fig:meanJit} shows the effect of the PFF system on the pulse-to-pulse 
+stability across a dataset around ten minutes in length (482~pulses). An 
 initial mean downstream phase jitter of \(0.92\pm0.04^\circ\) is reduced to \(0.20\pm0.01^\circ\) by the PFF 
 correction. All correlation between the upstream and downstream jitter is removed, from 
-\(96\pm2\%\) to \(0\pm7\%\). The achieved stability is in agreement with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
+\(96\pm2\%\) to \(0\pm7\%\). The achieved stability is consistent with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
 
 \textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
 PFF on. Helps to explain why achieved is better than predicted.}
 
 This represents the longest time period during which the target CLIC phase stability has been achieved with the prototype. 0.30 degrees phase jitter has been achieved in 20 minute datasets.
 
-\textcolor{red}{Result with wiggling?}
+\textcolor{red}{Mean phase vs. time and result with wiggling?}
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import EPS 
