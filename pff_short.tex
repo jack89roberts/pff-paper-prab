@@ -246,7 +246,9 @@ phase.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/corrRange}
-	\caption{\label{fig:corrRange}Correction range.}
+	\caption{\label{fig:corrRange}Downstream phase vs. the kicker amplifier 
+	input voltage. Markers show the measured response, and the line a linear 
+	fit to the data restricted to inputs between \(\pm1.2\)~V}
 \end{figure}
 
 The PFF system also should not degrade transverse stability of beam after 
@@ -261,7 +263,10 @@ offset of 1.5~mm inside the chicane.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Orbit closure. \textcolor{red}{Maybe: Replace 
+	\caption{\label{fig:orbClos}Horizontal orbit before (first two points), 
+	after (last two points) and inside the TL2 chicane at maximum (blue) and 
+	minimum (red) 
+	input to the kicker amplifiers. \textcolor{red}{Maybe: Replace 
 	lines with model 
 	prediction, add lines to indicate kicker positions, remove -2 V 
 	line}}
@@ -311,7 +316,9 @@ Fig.~\ref{fig:r56Scan} shows the effect of varying the \(R_{56}\) value in TL1 o
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
 	%EPS art
-	\caption{\label{fig:r56Scan}R56 scan. \textcolor{red}{Maybe remove 
+	\caption{\label{fig:r56Scan}Downstream (red points) and upstream (blue 
+	points) phase jitter vs. the \(R_{56}\) value in the set TL1 optics. 
+	\textcolor{red}{Maybe remove 
 	upstream jitter, or replace with a single value line.}}
 \end{figure}
 
@@ -340,7 +347,9 @@ leave that equation in-line without a number)}.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
-\caption{\label{fig:gScan}Gain scan.}
+\caption{\label{fig:gScan}Downstream phase vs. the upstream phase with the PFF 
+system on at four different gains: -1.6 (green), 0.0 (black), +1.6 (blue) and 
++3.2 (red).}
 \end{figure}
 
 \subsection{\label{ss:shape}Intra-Pulse Phase Variations}
@@ -386,7 +395,9 @@ to \(0.285\pm0.004^\circ\) by the PFF system.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS art
-	\caption{\label{fig:shape}Correction of pulse shape. \textcolor{red}{NB: 
+	\caption{\label{fig:shape}Effect of the PFF system on intra-pulse phase 
+	variations. The pulse shape upstream (green), and downstream with the PFF 
+	system off (blue) and on (red) is shown. \textcolor{red}{NB: 
 	2015 showed larger reduction in flatness, flatter corrected phase, but no 
 	wiggles in initial upstream phase.}}
 \end{figure}
@@ -394,7 +405,11 @@ to \(0.285\pm0.004^\circ\) by the PFF system.
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/flatness}% Here is how to import 
 	%EPS art
-	\caption{\label{fig:flatness}Pulse flatness.}
+	\caption{\label{fig:flatness}Distribution of downstream rms phase values, 
+	here 
+	referred to as the 
+	``pulse flatness'', for each beam pulse with the PFF system off (blue) and 
+	on (red).}
 \end{figure}
 
 
@@ -414,18 +429,29 @@ correction. All correlation between the upstream and downstream jitter is remove
 \textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
 PFF on. Helps to explain why achieved is better than predicted.}
 
-This represents the longest time period during which the target CLIC phase stability has been achieved with the prototype. 0.30 degrees phase jitter has been achieved in 20 minute datasets.
-
-\textcolor{red}{Mean phase vs. time and result with wiggling?}
+This represents the longest time period during which the target CLIC phase 
+stability has been achieved with the prototype. 0.30 degrees phase jitter has 
+been achieved in 20 minute datasets. The PFF system has also been operated 
+whilst intentionally varying the incoming mean phase, as shown in 
+Fig.~\ref{fig:wiggle}. The PFF system removes the additional phase variations 
+and achieves more than a factor 5 reduction in downstream phase jitter, from 
+\(1.71\pm0.07^\circ\) to \(0.32\pm0.01^\circ\) in this case.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import EPS 
 %art
-\caption{\label{fig:meanJit}Best mean phase jitter. 0.92 degrees to 0.20 
-degrees. \textcolor{red}{The mean is shifted by xxx degrees...}}
+\caption{\label{fig:meanJit}Distribution of the mean downstream phase with the 
+PFF system off (blue) and on (red).}
 \end{figure}
 
-
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/wiggle}% Here is how to import 
+	%EPS 
+	%art
+	\caption{\label{fig:wiggle}Mean downstream phase with the PFF system off 
+	(blue) and on (red) vs. time, with additional phase variations added to the 
+	incoming (PFF off) phase.}
+\end{figure}
 
 %\subsection{\label{ss:pbpJit}Point-by-point Jitter}
 %
