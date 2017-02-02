@@ -131,9 +131,9 @@ test facility CTF3, at CERN to prove its feasibility. The prototype system
 follows the same concept as the proposed CLIC scheme, and is the focus of this 
 work. 
 
-\textcolor{red}{CTF3: 135~MeV electron beam, 1.2~\(\mathrm{\mu}s\) beam pulse, 0.8~Hz.}
-
-All phases quoted in the paper are given in degrees at 12~GHz.
+CTF3 provides a 135~MeV electron beam bunched at 3~GHz with a pulse length of 
+1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz. All phases quoted 
+in the paper are given in degrees at 12~GHz.
 
 \section{\label{s:ctfLayout}System Design}
 
@@ -172,11 +172,10 @@ transport signals between the monitor and kickers is shorter, approximately
 bunch initially measured at the phase monitor, providing the total system 
 hardware latency is less than 130~ns. 
 
-\textcolor{red}{The system has a bandwidth of around 
-30~MHz, able to remove phase variations along the 1.2~\(\mathrm{\mu s}\) CTF3 
-beam 
-pulse, as well as any offsets in the overall mean phase.}
-
+CLIC requires a system with a correction 
+bandwidth exceeding 17.5~MHz. The prototype system has a bandwidth of around 
+30~MHz, and is therefore able to remove intra-pulse phase variations as well as 
+pulse-to-pulse phase jitter.
 
 \subsection{\label{ss:hardware}Hardware}
 
@@ -244,7 +243,8 @@ coefficient \(R_{52}\) between the kickers in the chicane. The coefficient
 \(R_{52}\) describes the change in path length through the chicane per unit 
 deflection at the first kicker. The optics at CTF3 have \(R_{52} = 0.74\)~m and 
 at the maximum amplifier output 
-of \(\pm700\)~V the kickers deflect the beam through 0.56~mrad. Together these 
+of \(\pm700\)~V the kickers deflect the beam through \(\pm0.56~mrad\). Together 
+these 
 define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or 
 \(\pm6\)~degrees, for the PFF 
 prototype.
@@ -255,8 +255,8 @@ the hardware and optics parameters. However, the output of the amplifier is
 non-linear for input voltages above 1.2~V (with a maximum input of 2~V). The 
 linear range of the PFF system is therefore closer to \(\pm4^\circ\).
 
-\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and 
-phase.}
+%\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and 
+%phase.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/corrRange}
@@ -285,9 +285,10 @@ offset of 1.5~mm inside the chicane.
 	CTF3 MADX model and hardware parameters.}
 \end{figure}
 
-\textcolor{red}{All this must be achieved whilst keeping dispersion low, matching betas etc. 
-within constraints of pre-existing buildings. Achieved R52 0.74m with max 
-dispersion 1.16m...}
+%\textcolor{red}{All this must be achieved whilst keeping dispersion low, 
+%matching betas etc. 
+%within constraints of pre-existing buildings. Achieved R52 0.74m with max 
+%dispersion 1.16m...}
 
 \subsection{\label{ss:r56} Phase Propagation}
 
@@ -317,7 +318,7 @@ described via the optics transfer matrix coefficient \(R_{56}\):
 \(\phi_d = \phi_u + R_{56}(\Delta p / p)\)
 , where \(\Delta p / p\) is the relative beam energy offset.
 
-\textcolor{red}{Correlation or jitter vs. R56 equation?...}
+%\textcolor{red}{Correlation or jitter vs. R56 equation?...}
 
 To achieve high upstream-downstream phase correlation the PFF system requires \(R_{56}\) to be zero between the upstream and 
 downstream phase monitors.
@@ -327,8 +328,7 @@ downstream phase monitors.
 	%EPS art
 	\caption{\label{fig:r56Scan}Downstream (red points) and upstream (blue 
 		points) phase jitter vs. the \(R_{56}\) value in the set TL1 optics. 
-		\textcolor{red}{Maybe remove 
-			upstream jitter, or replace with a single value line.}}
+		}
 \end{figure}
 
 The phase propagation has therefore been optimised by creating new optics for the transfer line TL1 (see Fig.~\ref{fig:pffLayout}) with \(R_{56}\) values ranging between -30~cm and +60~cm in 0.5~cm increments. TL1 can then be used to compensate for the non-zero \(R_{56}\) values in other beam lines, with the dominant contribution being from the TL2 chicane. In other words, TL1 is tuned such that \(R_{56}(\mathrm{TL1}) = -R_{56}(\mathrm{TL2})\).
@@ -359,8 +359,7 @@ The optimal system gain can be derived empirically by observing the dependence
 of the downstream phase on the upstream phase with the correction on, as seen 
 in Fig.~\ref{fig:gScan}. Optimal gain values for the system are typically in 
 the range 1.0--1.5, being larger than unity when the downstream jitter is 
-larger than upstream \textcolor{red}{as per Equation xxx (but would prefer to 
-leave that equation in-line without a number)}. 
+larger than upstream, as per the predicted theoretical values. 
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
@@ -489,21 +488,34 @@ and achieves more than a factor 5 reduction in downstream phase jitter, from
 \section{\label{s:conc}Conclusions}
 
 CLIC requires a PFF system to reduce the drive beam phase jitter by an order of 
-magnitude, from 2.0~degrees to 0.2~degrees. A prototype of the system has been 
-in operation at the CLIC test facility CTF3.
+magnitude, from 2.0~degrees to 0.2~degrees at 12~GHz, or better than 50~fs 
+stability. A prototype of the system has been 
+in operation at the CLIC test facility CTF3, and corrects the beam phase by 
+varying the path length through a chicane using two electromagnetic kickers. 
 
-The prototype has demonstrated \(0.20\pm0.01^\circ\) pulse-to-pulse 
-phase jitter on a time scale of ten minutes. 
+As 
+well as the kickers, the system uses newly designed phase monitors with 
+\(0.12^\circ\) resolution, high bandwidth 20~kW amplifiers and a low latency 
+digitiser/feedforward controller. %The system latency, including hardware and 
+%signal transit times, is less than the 380~ns beam time of flight between the 
+%input phase monitor and the correction chicane. Therefore, the correction can 
+%be directly applied to the same beam pulse initially measured at the monitor.
 
-Intra-pulse phase variations are also greatly reduced by the PFF system...
+New optics for the correction chicane and other beam lines at CTF3 have been 
+developed to yield the desired phase shifting behaviour and ensure high 
+correlation between the initial upstream and downstream phase.
 
-Drifts, in particular in beam energy, degrade the correlation between the 
-upstream and downstream phase and prevent this level of stability from being 
-demonstrated on longer time scales at CTF3. A key consideration for any future 
-system should be to design beam lines and optics with zero phase-energy 
-dependence, including non-linear dependencies, to solve this issue.
+The prototype system has demonstrated \(0.20\pm0.01^\circ\) pulse-to-pulse 
+phase jitter on a time scale of ten minutes. It has also been shown to be able 
+to flatten the phase sag and other higher bandwidth intra-pulse features.
 
-Try to apply to XFELs/something else.
+%Drifts, in particular in beam energy, degrade the correlation between the 
+%upstream and downstream phase and prevent this level of stability from being 
+%demonstrated on longer time scales at CTF3. A key consideration for any future 
+%system should be to design beam lines and optics with zero phase-energy 
+%dependence, including non-linear dependencies, to solve this issue.
+
+\textcolor{red}{Try to apply to XFELs/something else.}
 
 \bibliography{apssamp}% Produces the bibliography via BibTeX.
 
