@@ -196,26 +196,38 @@ is determined by
 comparing the measurements of the two upstream monitors (installed in the CT 
 line, see Fig.~\ref{fig:pffLayout}).
 
-The two electromagnetic kickers were also designed and built by INFN Frascati,  
-and are based on the DAFNE design. A voltage of 1.26~kV applied to the 
+The two electromagnetic stripline kickers were also designed and built by INFN 
+Frascati,  
+and are based on the DAFNE design. Each kicker is approximately 1~m in length, 
+with a horizontal strip separation of 40~mm. A voltage of 1.26~kV applied to 
+the 
 downstream end of the kicker strips yields a horizontal deflection of 1~mrad 
 for the 135~MeV CTF3 beam.
 
 The kicker amplifiers have been designed and built by the John Adams 
-Institue/Oxford University. For 
-an input voltage of 2~V gives an output of up to 700~V. Response linear within 
-3\% for input voltages up to \(1.2\)~V, then starts to saturate. Bandwidth 
-47~MHz for small signal variations up to 20\% max output...
+Institue/Oxford University. The 20~kW amplifiers consist of low voltage Si FETs 
+driving high voltage SiC FETs, and for 
+an input voltage of \(\pm2\)~V give an output of up to \(\pm700\)~V. The 
+amplifier response is linear within 
+3\% for input voltages between \(\pm1.2\)~V, then starts to saturate. The 
+output 
+has a bandwidth of 47~MHz for small signal variations up to 20\% max output, 
+and is slew rate limited for larger variations.
 
 Finally, the Feedforward digitiser and controller (FONT5a board) was also 
-designed and built by John Adams Institute/Oxford University. This takes the 
-processed phase monitor signals then calculates and outputs the appropriate 
-voltage with which to drive the amplifier. 9 ADCs, FPGA, 4 DACs... Digitises 
-output from phase monitor electronics, calculates amplifier output based on set 
-gain values, deals with correction timing...
+designed and built by John Adams Institute/Oxford University. This digitises 
+the 
+processed phase monitor signals and then calculates and outputs the appropriate 
+voltage with which to drive the amplifier in order to correct the phase. The 
+board consists of a Virtex-5 field programmable gate array (FPGA), nine 14-bit 
+analogue to digital converters (ADCs) clocked at 357~MHz, and four digital to 
+analogue converters (DACs). The parameters of the correction, such as the 
+system timing and gain, are controlled on the board via a LabVIEW data 
+acquisition and control system (DAQ).
 
-The total latency of the phase monitor electronics, FONT5a board and amplifier 
-is approximately 100~ns... \textcolor{red}{Mention timing setup}.
+The combined hardware latency for the PFF system is approximately 100~ns. The 
+output from the FONT5a board is delayed by 30~ns so that the drive voltage from 
+the amplifiers and the beam arrives at the kickers synchronously.
 
 \subsection{\label{ss:optics}Chicane Optics}
 
@@ -265,13 +277,12 @@ offset of 1.5~mm inside the chicane.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Horizontal orbit before (first two points), 
-	after (last two points) and inside the TL2 chicane at maximum (blue) and 
+	\caption{\label{fig:orbClos}Horizontal orbit before, 
+	after and inside the TL2 chicane at maximum (blue) and 
 	minimum (red) 
-	input to the kicker amplifiers. \textcolor{red}{Maybe: Replace 
-	lines with model 
-	prediction, add lines to indicate kicker positions, remove -2 V 
-	line}}
+	input to the kicker amplifiers. Markers show the measured position in beam 
+	position monitors, and dashed lines the predicted orbit using the 
+	CTF3 MADX model and hardware parameters.}
 \end{figure}
 
 \textcolor{red}{All this must be achieved whilst keeping dispersion low, matching betas etc. 
@@ -311,18 +322,22 @@ described via the optics transfer matrix coefficient \(R_{56}\):
 To achieve high upstream-downstream phase correlation the PFF system requires \(R_{56}\) to be zero between the upstream and 
 downstream phase monitors.
 
-The phase propagation has therefore been optimised by creating new optics for the transfer line TL1 (see Fig.~\ref{fig:pffLayout}) with \(R_{56}\) values ranging between -30~cm and +60~cm in 0.5~cm increments. TL1 can then be used to compensate for the non-zero \(R_{56}\) values in other beam lines, with the dominant contribution being from the TL2 chicane. In other words, TL1 is tuned such that \(R_{56}(\mathrm{TL1}) = -R_{56}(\mathrm{TL2})\).
-
-Fig.~\ref{fig:r56Scan} shows the effect of varying the \(R_{56}\) value in TL1 on the downstream phase jitter. With an \(R_{56}\) of around 10~cm in TL1 the downstream phase jitter is reduced to the same level as the upstream jitter, as desired. The upstream-downstream phase correlation is also increased in these conditions, with correlations above 95\% achieved.
-
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
 	%EPS art
 	\caption{\label{fig:r56Scan}Downstream (red points) and upstream (blue 
-	points) phase jitter vs. the \(R_{56}\) value in the set TL1 optics. 
-	\textcolor{red}{Maybe remove 
-	upstream jitter, or replace with a single value line.}}
+		points) phase jitter vs. the \(R_{56}\) value in the set TL1 optics. 
+		\textcolor{red}{Maybe remove 
+			upstream jitter, or replace with a single value line.}}
 \end{figure}
+
+The phase propagation has therefore been optimised by creating new optics for the transfer line TL1 (see Fig.~\ref{fig:pffLayout}) with \(R_{56}\) values ranging between -30~cm and +60~cm in 0.5~cm increments. TL1 can then be used to compensate for the non-zero \(R_{56}\) values in other beam lines, with the dominant contribution being from the TL2 chicane. In other words, TL1 is tuned such that \(R_{56}(\mathrm{TL1}) = -R_{56}(\mathrm{TL2})\).
+
+Fig.~\ref{fig:r56Scan} shows the effect of varying the \(R_{56}\) value in TL1 
+on the downstream phase jitter. With an \(R_{56}\) of around 10~cm in TL1 the 
+downstream phase jitter is reduced to the same level as the upstream jitter, as 
+desired. The upstream-downstream phase correlation is also increased in these 
+conditions, with correlations above 95\% achieved.
 
 In this way the necessary initial conditions for the PFF correction were 
 obtained at CTF3. However, the phase propagation is also sensitive to higher 
@@ -372,6 +387,29 @@ CLIC, where in any case the drive beam pulse length is less than 400~ns.
 %440~ns portion of pulse. Worse absolute but better removal small features 
 %compared to 2015.
 
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS 
+	%art
+	\caption{\label{fig:shape}Effect of the PFF system on intra-pulse phase 
+		variations. The pulse shape upstream (green), and downstream with the 
+		PFF 
+		system off (blue) and on (red) is shown. \textcolor{red}{NB: 
+			2015 showed larger reduction in flatness, flatter corrected phase, 
+			but no 
+			wiggles in initial upstream phase.}}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/flatness}% Here is how to import 
+	%EPS art
+	\caption{\label{fig:flatness}Distribution of downstream rms phase values, 
+		here 
+		referred to as the 
+		``pulse flatness'', for each beam pulse with the PFF system off (blue) 
+		and 
+		on (red).}
+\end{figure}
+
 Fig.~\ref{fig:shape} shows the effect of the PFF system on the intra-pulse 
 phase variations. The convention at CTF3 is to operate the PFF system in 
 interleaved mode, with 
@@ -390,30 +428,8 @@ for each beam pulse in the dataset, with the PFF system on and off. The PFF off
 pulses have an rms of \(0.960\pm0.003^\circ\) on average, and this is reduced 
 to \(0.285\pm0.004^\circ\) by the PFF system.
 
-
 %Limited by variations in phase propagation along the pulse (energy differences 
 %etc.).
-
-
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS art
-	\caption{\label{fig:shape}Effect of the PFF system on intra-pulse phase 
-	variations. The pulse shape upstream (green), and downstream with the PFF 
-	system off (blue) and on (red) is shown. \textcolor{red}{NB: 
-	2015 showed larger reduction in flatness, flatter corrected phase, but no 
-	wiggles in initial upstream phase.}}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/flatness}% Here is how to import 
-	%EPS art
-	\caption{\label{fig:flatness}Distribution of downstream rms phase values, 
-	here 
-	referred to as the 
-	``pulse flatness'', for each beam pulse with the PFF system off (blue) and 
-	on (red).}
-\end{figure}
-
 
 \subsection{\label{ss:meanJit}Pulse-to-pulse Jitter}
 
@@ -422,13 +438,22 @@ corrects offsets in the overall mean phase, i.e. any pulse-to-pulse jitter. The
 mean phase of each beam pulse is calculated across the 440~ns range in the 
 central portion of the pulse, as shown before in Fig.~\ref{fig:shape}.
 
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import 
+	%EPS 
+	%art
+	\caption{\label{fig:meanJit}Distribution of the mean downstream phase with 
+		the 
+		PFF system off (blue) and on (red).}
+\end{figure}
+
 Fig.~\ref{fig:meanJit} shows the effect of the PFF system on the pulse-to-pulse 
 stability across a dataset around ten minutes in length (482~pulses). An 
 initial mean downstream phase jitter of \(0.92\pm0.04^\circ\) is reduced to \(0.20\pm0.01^\circ\) by the PFF 
 correction. All correlation between the upstream and downstream jitter is removed, from 
 \(96\pm2\%\) to \(0\pm7\%\). The achieved stability is consistent with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
-
-\textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but \(0.68\pm0.03^\circ\) for 
+\textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but 
+\(0.68\pm0.03^\circ\) for 
 PFF on. Helps to explain why achieved is better than predicted.}
 
 This represents the longest time period during which the target CLIC phase 
@@ -440,19 +465,11 @@ and achieves more than a factor 5 reduction in downstream phase jitter, from
 \(1.71\pm0.07^\circ\) to \(0.32\pm0.01^\circ\) in this case.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import EPS 
-%art
-\caption{\label{fig:meanJit}Distribution of the mean downstream phase with the 
-PFF system off (blue) and on (red).}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/wiggle}% Here is how to import 
-	%EPS 
-	%art
+	\includegraphics[width=\columnwidth]{figs/wiggle}
 	\caption{\label{fig:wiggle}Mean downstream phase with the PFF system off 
-	(blue) and on (red) vs. time, with additional phase variations added to the 
-	incoming (PFF off) phase.}
+		(blue) and on (red) vs. time, with additional phase variations added to 
+		the 
+		incoming phase.}
 \end{figure}
 
 %\subsection{\label{ss:pbpJit}Point-by-point Jitter}
