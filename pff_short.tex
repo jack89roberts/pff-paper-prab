@@ -45,6 +45,9 @@
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
 \usepackage{color}
+\usepackage{pgfplots} 
+\usepackage{tikzscale}
+\pgfplotsset{compat=newest} 
 %\usepackage{hyperref}% add hypertext capabilities
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
@@ -58,7 +61,7 @@
 %]{geometry}
 
 \begin{document}
-
+\tikzset{font=\fontsize{15}{22.4}\selectfont}
 %\preprint{APS/123-QED}
 
 \title{Demonstration of 50~fs stability of an \\ electron beam at the CLIC Test 
@@ -86,16 +89,21 @@ Facility CTF3}
 \date{\today}
 
 \begin{abstract}
-Here is the abstract.
-%\begin{description}
-%\item[Usage]
-%Secondary publications and information retrieval purposes.
-%\item[PACS numbers]
-%May be entered using the \verb+\pacs{#1}+ command.
-%\item[Structure]
-%You may use the \texttt{description} environment to structure your abstract;
-%use the optional argument of the \verb+\item+ command to give the category of each item. 
-%\end{description}
+CLIC, a proposed future linear electron-positron collider, and other machines 
+such as XFELs, place tight tolerances on the phase stabilities of their beams. 
+CLIC proposes the use of a novel, high bandwidth and low latency, `phase 
+feedforward' system required to achieve a phase stability of 
+\(0.2^\circ\)~at~12~GHz, or 
+about 50~fs. This work documents the results from operation of a prototype 
+phase 
+feedforward system at the CLIC test facility CTF3, with 30~MHz bandwidth and a 
+total hardware latency of 100~ns. New phase monitors with 
+30~fs resolution, 20~kW amplifiers with 47~MHz bandwidth, and electromagnetic 
+kickers have been designed and installed for the system. The system utilises a 
+chicane in the beamline, for which new optics have been created and 
+commissioned. The prototype has demonstrated CLIC-level phase stability, 
+reducing an initial rms phase variation of \(0.92\pm0.04^\circ\) to 
+\(0.20\pm0.01^\circ\) across a duration of 10~minutes.
 \end{abstract}
 
 %\pacs{Valid PACS appear here}% PACS, the Physics and Astronomy
@@ -326,7 +334,6 @@ described via the optics transfer matrix coefficient \(R_{56}\):
 
 To achieve high upstream-downstream phase correlation the PFF system requires \(R_{56}\) to be zero between the upstream and 
 downstream phase monitors.
-
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
 	%EPS art
