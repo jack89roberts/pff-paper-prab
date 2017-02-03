@@ -119,10 +119,12 @@ CLIC's luminosity quickly drops if the RF phase jitters with respect to the
 main beam, causing energy errors and subsequent beam size growth at the 
 interaction point. The RF phase 
 stability must be 0.2 degrees at 12~GHz (around 50~fs) or better to limit the luminosity loss 
-to below 1\%.  However, the expected phase stability of the drive beams is 2 
+to below 1\%.  However, the phase stability of the drive beams cannot be 
+guaranteed to be better than 2 
 degrees at 12~GHz. CLIC therefore requires a ``phase feedforward'' (PFF) 
 system that will reduce the drive beam phase jitter (rms) by an order of 
-magnitude. \textcolor{red}{XFELs have similar phase stability requirements [!!!???].}
+magnitude. Other machines, such as XFELs, have similar phase stability 
+requirements.
 
 The PFF system poses many challenges, particularly in terms of the hardware 
 bandwidth, power and latency requirements. A prototype PFF system has therefore 
@@ -132,7 +134,8 @@ follows the same concept as the proposed CLIC scheme, and is the focus of this
 work. 
 
 CTF3 provides a 135~MeV electron beam bunched at 3~GHz with a pulse length of 
-1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz. All phases quoted 
+1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz. Further details 
+on the CTF3 facility can be found in [REF]. All phases quoted 
 in the paper are given in degrees at 12~GHz.
 
 \section{\label{s:ctfLayout}System Design}
@@ -192,7 +195,8 @@ allowing a resolution of \(0.12^\circ\) to be
 achieved whilst maintaining linearity between \(\pm70^\circ\). The quoted 
 resolution 
 is determined by 
-comparing the measurements of the two upstream monitors (installed in the CT 
+comparing the measurements of the two adjacent upstream monitors (installed in 
+the CT 
 line, see Fig.~\ref{fig:pffLayout}).
 
 The two electromagnetic stripline kickers were also designed and built by INFN 
@@ -226,15 +230,15 @@ acquisition and control system (DAQ).
 
 The combined hardware latency for the PFF system is approximately 100~ns. The 
 output from the FONT5a board is delayed by 30~ns so that the drive voltage from 
-the amplifiers and the beam arrives at the kickers synchronously.
+the amplifiers and the beam arrive at the kickers synchronously.
 
 \subsection{\label{ss:optics}Chicane Optics}
 
 The PFF system places additional constraints on the optics of the correction 
 chicane, and also on the beam lines between the upstream phase monitor and the 
-chicane. These constraints are needed to ensure a linear dependence of the 
-phase on the kicker voltage, to ensure the PFF system does not degrade the beam 
-orbit stability downstream of the chicane, and to ensure there is high 
+chicane. These constraints are needed to ensure that the phase depends linearly 
+on the kicker voltage, that the PFF system does not degrade the beam 
+orbit stability downstream of the chicane, and that there is high 
 correlation between the initial (uncorrected) upstream and downstream phase.
 
 The correction range of the PFF system is defined by the kicker design, the 
@@ -395,10 +399,7 @@ CLIC, where in any case the drive beam pulse length is less than 400~ns.
 	\caption{\label{fig:shape}Effect of the PFF system on intra-pulse phase 
 		variations. The pulse shape upstream (green), and downstream with the 
 		PFF 
-		system off (blue) and on (red) is shown. \textcolor{red}{NB: 
-			2015 showed larger reduction in flatness, flatter corrected phase, 
-			but no 
-			wiggles in initial upstream phase.}}
+		system off (blue) and on (red) is shown.}
 \end{figure}
 
 \begin{figure}
@@ -454,9 +455,9 @@ stability across a dataset around ten minutes in length (482~pulses). An
 initial mean downstream phase jitter of \(0.92\pm0.04^\circ\) is reduced to \(0.20\pm0.01^\circ\) by the PFF 
 correction. All correlation between the upstream and downstream jitter is removed, from 
 \(96\pm2\%\) to \(0\pm7\%\). The achieved stability is consistent with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
-\textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but 
-\(0.68\pm0.03^\circ\) for 
-PFF on. Helps to explain why achieved is better than predicted.}
+%\textcolor{red}{NB: upstream PFF off is \(0.76\pm0.03^\circ\), but 
+%\(0.68\pm0.03^\circ\) for 
+%PFF on. Helps to explain why achieved is better than predicted.}
 
 This represents the longest time period during which the target CLIC phase 
 stability has been achieved with the prototype. 0.30 degrees phase jitter has 
