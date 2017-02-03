@@ -121,13 +121,13 @@ interaction point. The RF phase
 stability must be 0.2 degrees at 12~GHz (around 50~fs) or better to limit the luminosity loss 
 to below 1\%.  However, the expected phase stability of the drive beams is 2 
 degrees at 12~GHz. CLIC therefore requires a ``phase feedforward'' (PFF) 
-system that will reduce the drive beam phase jitter (rms) by an order of 
+system, which will reduce the drive beam phase jitter (rms) by an order of 
 magnitude. \textcolor{red}{XFELs have similar phase stability requirements [!!!???].}
 
 The PFF system poses many challenges, particularly in terms of the hardware 
 bandwidth, power and latency requirements. A prototype PFF system has therefore 
 been designed, commissioned and operated at the CLIC 
-test facility CTF3, at CERN, to prove its feasibility. The prototype system 
+test facility CTF3, at CERN to prove its feasibility. The prototype system 
 follows the same concept as the proposed CLIC scheme, and is the focus of this 
 work. 
 
@@ -243,7 +243,7 @@ coefficient \(R_{52}\) between the kickers in the chicane. The coefficient
 \(R_{52}\) describes the change in path length through the chicane per unit 
 deflection at the first kicker. The optics at CTF3 have \(R_{52} = 0.74\)~m and 
 at the maximum amplifier output 
-of \(\pm700\)~V the kickers deflect the beam through \(\pm0.56\)~mrad. Together 
+of \(\pm700\)~V the kickers deflect the beam through \(\pm0.56~mrad\). Together 
 these 
 define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or 
 \(\pm6\)~degrees, for the PFF 
@@ -252,7 +252,7 @@ prototype.
 The measured phase shift in the chicane versus the amplifier input voltage is 
 shown in Fig.~\ref{fig:corrRange}, and agrees with the predicted range given 
 the hardware and optics parameters. However, the output of the amplifier is 
-non-linear for input voltages outside \(\pm1.2\)~V. The 
+non-linear for input voltages above 1.2~V (with a maximum input of 2~V). The 
 linear range of the PFF system is therefore closer to \(\pm4^\circ\).
 
 %\textcolor{red}{MADX units for R52, R56, i.e. conversion between distance and 
@@ -265,7 +265,7 @@ linear range of the PFF system is therefore closer to \(\pm4^\circ\).
 	fit to the data restricted to inputs between \(\pm1.2\)~V}
 \end{figure}
 
-The PFF system also should not degrade the transverse stability of beam after 
+The PFF system also should not degrade transverse stability of beam after 
 chicane. The purpose of the second kicker is to close the orbit bump created by 
 the first kicker, so that the downstream beam orbit is independent of the 
 kicker voltage. In terms of optics tranfer matrix coefficients this can be 
@@ -277,8 +277,8 @@ offset of 1.5~mm inside the chicane.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Horizontal orbit in and around the TL2 chicane 
-	at maximum (blue) and 
+	\caption{\label{fig:orbClos}Horizontal orbit before, 
+	after and inside the TL2 chicane at maximum (blue) and 
 	minimum (red) 
 	input to the kicker amplifiers. Markers show the measured position in beam 
 	position monitors, and dashed lines the predicted orbit using the 
@@ -341,8 +341,7 @@ conditions, with correlations above 95\% achieved.
 
 In this way the necessary initial conditions for the PFF correction were 
 obtained at CTF3. However, the phase propagation is also sensitive to higher 
-order phase--energy dependencies and therefore to beam energy drifts. These 
-lead 
+order phase--energy dependencies and therefore beam energy drifts. These lead 
 to apparent drifts in the optimal set point for \(R_{56}\) in TL1 and have made 
 it difficult to maintain high correlation between the upstream and downstream 
 phase on long timescales.
@@ -365,18 +364,16 @@ larger than upstream, as per the predicted theoretical values.
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
 \caption{\label{fig:gScan}Downstream phase vs. the upstream phase with the PFF 
-system on at four different gains: -1.6 (green), 0.0 (magenta), +1.6 (blue) and 
-+3.2 (orange). Data points (markers) and linear fits to the data (lines) are 
-shown.}
+system on at four different gains: -1.6 (green), 0.0 (black), +1.6 (blue) and 
++3.2 (red).}
 \end{figure}
 
 \subsection{\label{ss:shape}Intra-Pulse Phase Variations}
 
 The PFF correction is shaped to remove phase variations along the 
 1.2~\(\mathrm{\mu s}\) CTF3 beam pulse. The predominant intra-pulse feature at 
-CTF3
 is a roughly parabolic ``phase sag'' of \(40^\circ\) peak-to-peak, resulting 
-from the use of RF pulse compression. As this is much larger than the 
+from the RF pulse compression system at CTF3. As this is much larger than the 
 \(\pm 6^\circ\) range of the PFF system, only approximately a 400~ns portion of 
 the pulse can be optimally corrected. The phase sag would not be present at 
 CLIC, where in any case the drive beam pulse length is less than 400~ns.
