@@ -20,7 +20,7 @@
 %
 \documentclass[%
  reprint,
-%superscriptaddress,
+superscriptaddress,
 %groupedaddress,
 %unsortedaddress,
 %runinaddress,
@@ -64,27 +64,36 @@
 \tikzset{font=\fontsize{15}{22.4}\selectfont}
 %\preprint{APS/123-QED}
 
-\title{Demonstration of 50~fs stability of an \\ electron beam at the CLIC Test 
-Facility CTF3}
+\title{Stabilisation of the Arrival Time of a High Energy Electron Beam at the 
+50~fs Level}
 %\thanks{A footnote to the article title}%
 
 \author{J.~Roberts}
-\altaffiliation[Also at ]{CERN, Geneva.}
-\email{Jack.Roberts@cern.ch}
+\email{Corresponding author Jack.Roberts@cern.ch}
+\affiliation{John Adams Institute,University of Oxford}
+\affiliation{CERN, Geneva}
+%\altaffiliation{CERN, Geneva.}
+
 \author{P.~Burrows}
+\affiliation{John Adams Institute,University of Oxford}
+
 \author{G.~Christian}
-\author{C.~Perry}
-\affiliation{John Adams Institute\\University of Oxford}
-\collaboration{FONT Group}%\noaffiliation
+\affiliation{John Adams Institute,University of Oxford}
 
 \author{R.~Corsini}
-\author{P.~Skowronski}
 \affiliation{CERN, Geneva}
-\collaboration{CTF3 Collaboration}%\noaffiliation
 
 \author{A.~Ghigo}
+\affiliation{INFN/LNF, Frascati}
+
 \author{F.~Marcellini}
 \affiliation{INFN/LNF, Frascati}
+
+\author{C.~Perry}
+\affiliation{John Adams Institute,University of Oxford}
+
+\author{P.~Skowronski}
+\affiliation{CERN, Geneva}
 
 \date{\today}
 
@@ -116,7 +125,8 @@ reducing an initial rms phase variation of \(0.92\pm0.04^\circ\) to
 
 \section{\label{s:intro}Introduction}
 
-CLIC is a proposal for a future linear electron positron collider that uses a 
+CLIC \cite{CLICCDR} is a proposal for a future linear electron positron 
+collider that uses a 
 novel two 
 beam acceleration concept to achieve a high accelerating gradient of 100~MV/m 
 and a collision energy of up to 3 TeV. In this concept the 12~GHz RF power used 
@@ -126,16 +136,23 @@ drive beams.
 CLIC's luminosity quickly drops if the RF phase jitters with respect to the 
 main beam, causing energy errors and subsequent beam size growth at the 
 interaction point. The RF phase 
-stability must be 0.2 degrees at 12~GHz (around 50~fs) or better to limit the luminosity loss 
-to below 1\%.  However, the phase stability of the drive beams cannot be 
-guaranteed to be better than 2 
-degrees at 12~GHz. CLIC therefore requires a ``phase feedforward'' (PFF) 
+stability must be \(0.2^\circ\)~at~12~GHz (around 50~fs) or better to limit the 
+luminosity loss 
+to below 1\% \cite{CLICCDR}.  However, the phase stability of the drive beams 
+cannot be 
+guaranteed to be better than \(2^\circ\)~at~12~GHz. CLIC therefore requires a 
+``phase feedforward'' (PFF) 
 system that will reduce the drive beam phase jitter (rms) by an order of 
 magnitude. Other machines, such as XFELs, have similar phase stability 
 requirements.
 
 The PFF system poses many challenges, particularly in terms of the hardware 
-bandwidth, power and latency requirements. A prototype PFF system has therefore 
+bandwidth (\textgreater17.5~MHz \cite{Gerber2015}), power (500~kW amplifiers) 
+and latency 
+requirements. A prototype 
+PFF 
+system 
+has therefore 
 been designed, commissioned and operated at the CLIC 
 test facility CTF3, at CERN, to prove its feasibility. The prototype system 
 follows the same concept as the proposed CLIC scheme, and is the focus of this 
@@ -183,17 +200,13 @@ transport signals between the monitor and kickers is shorter, approximately
 bunch initially measured at the phase monitor, providing the total system 
 hardware latency is less than 130~ns. 
 
-CLIC requires a system with a correction 
-bandwidth exceeding 17.5~MHz. The prototype system has a bandwidth of around 
-30~MHz, and is therefore able to remove intra-pulse phase variations as well as 
-pulse-to-pulse phase jitter.
-
 \subsection{\label{ss:hardware}Hardware}
 
 The PFF system uses three phase monitors, two electromagnetic kickers, kicker 
 amplifiers and a digitiser/feedforward controller.
 
-The three phase monitors are designed and built by INFN Frascati, with the 
+The three phase monitors \cite{phMonEuCard} are designed and built by INFN 
+Frascati, with the 
 associated electronics built by CERN. The monitors are 12~GHz resonating 
 cavities with a dipole and monopole mode present. The output from opposing 
 vertical pairs of feedthroughs are summed in hybrids to create a position 
@@ -207,7 +220,8 @@ comparing the measurements of the two adjacent upstream monitors (installed in
 the CT 
 line, see Fig.~\ref{fig:pffLayout}).
 
-The two electromagnetic stripline kickers were also designed and built by INFN 
+The two electromagnetic stripline kickers \cite{kickerIPAC11} were also 
+designed and built by INFN 
 Frascati,  
 and are based on the DAFNE design. Each kicker is approximately 1~m in length, 
 with a horizontal strip separation of 40~mm. A voltage of 1.26~kV applied to 
@@ -215,7 +229,8 @@ the
 downstream end of the kicker strips yields a horizontal deflection of 1~mrad 
 for the 135~MeV CTF3 beam.
 
-The kicker amplifiers have been designed and built by the John Adams 
+The kicker amplifiers \cite{RobertsThesis} have been designed and built by the 
+John Adams 
 Institue/Oxford University. The 20~kW amplifiers consist of low voltage Si FETs 
 driving high voltage SiC FETs, and for 
 an input voltage of \(\pm2\)~V give an output of up to \(\pm700\)~V. The 
@@ -225,7 +240,8 @@ output
 has a bandwidth of 47~MHz for small signal variations up to 20\% max output, 
 and is slew rate limited for larger variations.
 
-Finally, the Feedforward digitiser and controller (FONT5a board) was also 
+Finally, the Feedforward digitiser and controller (FONT5a board) 
+\cite{RobertsThesis} was also 
 designed and built by John Adams Institute/Oxford University. This digitises 
 the 
 processed phase monitor signals and then calculates and outputs the appropriate 
@@ -258,7 +274,7 @@ at the maximum amplifier output
 of \(\pm700\)~V the kickers deflect the beam through \(\pm0.56\)~mrad. Together 
 these 
 define a correction range of approximately \(\pm400~\mathrm{\mu m}\), or 
-\(\pm6\)~degrees, for the PFF 
+\(\pm6^\circ\), for the PFF 
 prototype.
 
 The measured phase shift in the chicane versus the amplifier input voltage is 
@@ -321,7 +337,7 @@ downstream phase jitter (\(\sigma_{\mathrm{PFF}}\)) with this gain is given by:
 One of the key challenges in operating the PFF prototype at CTF3 has been 
 obtaining high correlation between the initial, uncorrected, upstream and 
 downstream phase. A correlation of 97\% is required to reduce a typical initial 
-phase jitter of \(0.8\)~degrees to the target of \(0.2\)~degrees. Early 
+phase jitter of \(0.8^\circ\) to the target of \(0.2^\circ\). Early 
 measurements showed below 40\% correlation, and typically a factor 3 increase in the downstream phase jitter with respect to the upstream jitter.
 
 The source of low correlation and jitter amplification was discovered to be energy dependent phase 
@@ -351,12 +367,12 @@ desired. The upstream-downstream phase correlation is also increased in these
 conditions, with correlations above 95\% achieved.
 
 In this way the necessary initial conditions for the PFF correction were 
-obtained at CTF3. However, the phase propagation is also sensitive to higher 
-order phase--energy dependencies and therefore to beam energy drifts. These 
-lead 
-to apparent drifts in the optimal set point for \(R_{56}\) in TL1 and have made 
-it difficult to maintain high correlation between the upstream and downstream 
-phase on long timescales.
+obtained at CTF3. However, the optics at CTF3 also contain a large second order 
+phase-energy dependence, which leads to a degradation in upstream-downstream 
+phase correlation if there are drifts in beam energy. Energy drifts resulting 
+from instabilities and trips of klystrons at CTF3 have therefore made it 
+difficult to maintain high phase correlations for timescales longer than 
+10~minutes. 
 
 \section{\label{s:results}Results}
 
@@ -428,15 +444,20 @@ the initial (`PFF Off') and corrected (`PFF On') downstream phase to be
 performed concurrently. The upstream (PFF input) phase is also shown for 
 comparison. Vertical dashed lines mark a 440~ns portion of the pulse where the 
 correction is optimal, and this range is used to calculate statistics on the 
-effect of the system. In this range the PFF system flattens the phase, 
+effect of the system. 
+
+In this range the PFF system flattens the phase, 
 and almost all variations are removed. Residual offsets in the phase are still 
 present where there are small uncorrelated differences between the shape of the 
-initial upstream and downstream phase.
-
-Fig.~\ref{fig:flatness} shows the rms phase variation within the 440~ns range 
+initial upstream and downstream phase. Fig.~\ref{fig:flatness} shows the rms 
+phase variation within the 440~ns range 
 for each beam pulse in the dataset, with the PFF system on and off. The PFF off 
 pulses have an rms of \(0.960\pm0.003^\circ\) on average, and this is reduced 
 to \(0.285\pm0.004^\circ\) by the PFF system.
+
+The PFF system at CTF3 has been verified to reduce the amplitude of 
+phase errors up to a frequency of 25~MHz, exceeding the CLIC requirements.
+
 
 %Limited by variations in phase propagation along the pulse (energy differences 
 %etc.).
@@ -458,7 +479,7 @@ central portion of the pulse, as shown before in Fig.~\ref{fig:shape}.
 \end{figure}
 
 Fig.~\ref{fig:meanJit} shows the effect of the PFF system on the pulse-to-pulse 
-stability across a dataset around ten minutes in length (482~pulses). An 
+stability across a dataset around ten minutes in length. An 
 initial mean downstream phase jitter of \(0.92\pm0.04^\circ\) is reduced to \(0.20\pm0.01^\circ\) by the PFF 
 correction. All correlation between the upstream and downstream jitter is removed, from 
 \(96\pm2\%\) to \(0\pm7\%\). The achieved stability is consistent with the theoretical prediction (considering the initial correlation and jitter) of \(0.26\pm0.06^\circ\) within error bars.
@@ -467,8 +488,14 @@ correction. All correlation between the upstream and downstream jitter is remove
 %PFF on. Helps to explain why achieved is better than predicted.}
 
 This represents the longest time period during which the target CLIC phase 
-stability has been achieved with the prototype. 0.30 degrees phase jitter has 
-been achieved in 20 minute datasets. The PFF system has also been operated 
+stability has been achieved with the prototype. \(0.30^\circ\) phase jitter has 
+been achieved in 20 minute datasets. The limiting factor for achieving this 
+performance on longer timescales is the incoming beam conditions; in particular 
+klystron instabilities at CTF3 lead to degraded upstream-downstream phase 
+correlation and phase drifts outside the PFF correction range, as previously 
+mentioned.
+
+The PFF system has also been operated 
 whilst intentionally varying the incoming mean phase, as shown in 
 Fig.~\ref{fig:wiggle}. The PFF system removes the additional phase variations 
 and achieves more than a factor 5 reduction in downstream phase jitter, from 
@@ -499,7 +526,7 @@ and achieves more than a factor 5 reduction in downstream phase jitter, from
 \section{\label{s:conc}Conclusions}
 
 CLIC requires a PFF system to reduce the drive beam phase jitter by an order of 
-magnitude, from 2.0~degrees to 0.2~degrees at 12~GHz, or better than 50~fs 
+magnitude, from \(2.0^\circ\) to \(0.2^\circ\)~at~12~GHz, or better than 50~fs 
 stability. A prototype of the system has been 
 in operation at the CLIC test facility CTF3, and corrects the beam phase by 
 varying the path length through a chicane using two electromagnetic kickers. 
@@ -507,10 +534,11 @@ varying the path length through a chicane using two electromagnetic kickers.
 As 
 well as the kickers, the system uses newly designed phase monitors with 
 \(0.12^\circ\) resolution, high bandwidth 20~kW amplifiers and a low latency 
-digitiser/feedforward controller. %The system latency, including hardware and 
-%signal transit times, is less than the 380~ns beam time of flight between the 
-%input phase monitor and the correction chicane. Therefore, the correction can 
-%be directly applied to the same beam pulse initially measured at the monitor.
+digitiser/feedforward controller. The system latency, including hardware and 
+signal transit times, is less than the 380~ns beam time of flight between the 
+input phase monitor and the correction chicane. Therefore, the feedforward 
+correction can 
+be directly applied to the same bunch initially measured at the monitor.
 
 New optics for the correction chicane and other beam lines at CTF3 have been 
 developed to yield the desired phase shifting behaviour and ensure high 
@@ -518,7 +546,10 @@ correlation between the initial upstream and downstream phase.
 
 The prototype system has demonstrated \(0.20\pm0.01^\circ\) pulse-to-pulse 
 phase jitter on a time scale of ten minutes. It has also been shown to be able 
-to flatten the phase sag and other higher bandwidth intra-pulse features.
+to flatten intra-pulse phase variations up to a frequency of 25~MHz. On longer 
+timescales the performance of the system is limited by changes to the incoming 
+beam conditions, in particular beam energy, which would be better controlled in 
+any future application at CLIC.
 
 %Drifts, in particular in beam energy, degrade the correlation between the 
 %upstream and downstream phase and prevent this level of stability from being 
@@ -527,6 +558,12 @@ to flatten the phase sag and other higher bandwidth intra-pulse features.
 %dependence, including non-linear dependencies, to solve this issue.
 
 %\textcolor{red}{Try to apply to XFELs/something else.}
+
+\section{\label{s:ack}Acknowledgements}
+\begin{acknowledgments}
+	We wish to acknowledge everyone involved in the operation of CTF3 for their 
+	help and support in realising the PFF system.
+\end{acknowledgments}
 
 \bibliography{pff_short}% Produces the bibliography via BibTeX.
 
