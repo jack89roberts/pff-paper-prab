@@ -171,9 +171,8 @@ quoted in the paper are given in degrees at 12~GHz, as relevant for CLIC.
 
 %\section{\label{s:ctfLayout}System Design}
 
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/ctfpffLayout}% Here is 
-	%how to 
+\begin{figure*}
+	\includegraphics[width=\textwidth]{figs/ctfpffLayout}% Here is how to 
 	%import EPS art
 	\caption{\label{fig:pffLayout}Schematic of the PFF prototype at CTF3, 
 	showing the approximate location of the phase monitors (\(\phi_1\) , 
@@ -181,11 +180,11 @@ quoted in the paper are given in degrees at 12~GHz, as relevant for CLIC.
 		the kickers (K1 and K2). The black box “PFF” represents the calculation 
 		and output of the correction, including the phase monitor
 		electronics, feedforward controller and kicker amplifiers. A bunch 
-		arriving early at \(\phi_1\) is directed on to a longer path in the
+		arriving early at \(\phi_1\) is directed on to a longer path in the TL2 
 		chicane
 		using the kickers (blue trajectory), whereas a bunch arriving late will 
 		be directed on to a shorter path (red trajectory). }
-\end{figure}
+\end{figure*}
 
 A schematic of the prototype PFF system is shown in Fig.~\ref{fig:pffLayout}. 
 The system corrects the phase using two electromagnetic kickers installed 
@@ -221,31 +220,19 @@ hardware latency is less than 130~ns.
 
 The PFF system presents a significant hardware challenge, in particular in 
 terms of the power and bandwidth requirements for the kicker amplifiers, and 
-the resolution of the phase monitors. A low latency digitiser and feedforward 
-controller is also required. New 
+the resolution of the phase monitors. As well as the kickers themselves, the 
+system utilises a low latency digitiser and feedforward controller. New 
 components have been designed and built for the prototype at CTF3, and a 
 summary of their parameters in comparison to the CLIC requirements is shown in 
-Table~\ref{tab:pffspecs}. 
+\textcolor{red}{Table~x}. 
 
-\begin{table}
-	\caption{\label{tab:pffspecs}
-		Parameters of the prototype PFF system at CTF3, and how they compare to 
-		the proposed CLIC scheme.}
-\begin{ruledtabular}
-	\begin{tabular}{lcc}
-		 & CLIC & CTF3 \\
-		\hline
-		No. Systems & 48 & 1 \\
-		Kickers per Chicane & 16 & 2 \\
-		Angular Deflection per Kicker & \(\pm94~\mathrm{\mu rad}\) & 
-		\(\pm560~\mathrm{\mu rad}\) \\
-		Correction Range & \(\pm 10^\circ\) & \(\pm 6^\circ\) \\
-		Correction Bandwidth & \(>17.5\)~MHz & \(>23\)~MHz \\
-		Phase Monitor Resolution & \(\ll 0.20^\circ\) & \(0.12^\circ\)  \\
-		Power of Kicker Amplifiers & 500~kW & 20~kW \\
-	\end{tabular}
-\end{ruledtabular}
-\end{table}
+\textcolor{red}{Table:
+No. Systems
+No. Kickers
+Phase Monitor Resolution
+Amplifier Power
+Angular Deflection @ Kicker
+Correction Bandwidth}
 
 \textcolor{red}{The main differences between the CTF3 and CLIC systems:
 48 systems at CLIC (one per decelerator sector) - synchronisation between 
@@ -294,8 +281,7 @@ amplifier and state actual max deflection?}
 
 The kicker amplifiers \cite{RobertsThesis} have been designed and built by the 
 John Adams 
-Institute/Oxford University. The 20~kW amplifiers consist of low voltage Si 
-FETs 
+Institue/Oxford University. The 20~kW amplifiers consist of low voltage Si FETs 
 driving high voltage SiC FETs, and for 
 an input voltage of \(\pm2\)~V give an output of up to \(\pm700\)~V. The 
 amplifier response is linear within 
@@ -446,22 +432,23 @@ result.
 
 \subsection{\label{ss:gScan}Gain Scan}
 
-Fig.~\ref{fig:gScan} shows how the downstream phase jitter depends on the PFF 
-system gain. With stable incoming beam conditions the downstream phase jitter 
-should depend quadratically on the gain \cite{RobertsThesis}. Taking in to 
-account drifts in the initial upstream-downstream phase correlation and 
-downstream phase jitter during the scan, which modify the gain--jitter 
-relationship, the achieved and predicted performance agree within the error at 
-all gains. At CTF3 the optimal system gain is typically in the range 1.0--1.2, 
-being larger than unity when there is a small amplification in the downstream 
-phase jitter with respect to the upstream phase jitter.
+With the optimal gain the PFF correction acts to remove all correlation between 
+the upstream and downstream phase, reducing the downstream phase jitter. If the 
+gain is too small some residual correlation will remain, and if it is too large 
+the correlation will flip sign. 
+
+The optimal system gain can be derived empirically by observing the dependence 
+of the downstream phase on the upstream phase with the correction on, as seen 
+in Fig.~\ref{fig:gScan}. Optimal gain values for the system are typically in 
+the range 1.0--1.5, being larger than unity when the downstream jitter is 
+larger than upstream, as per the predicted theoretical values. 
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
 \caption{\label{fig:gScan}Downstream phase jitter with the PFF system on at 
 different gains. Markers show the measured phase jitter with standard error 
 bars. The shaded red region shows the expected performance given the initial 
-beam conditions.}
+jitter and correlation with the PFF system off.}
 \end{figure}
 
 \subsection{\label{ss:shape}Intra-Pulse Phase Variations}
