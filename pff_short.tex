@@ -105,7 +105,8 @@ feedforward' system required to achieve a phase stability of
 \(0.2^\circ\)~at~12~GHz, or 
 about 50~fs. This work documents the results from operation of a prototype 
 phase 
-feedforward system at the CLIC test facility CTF3, with 30~MHz bandwidth and a 
+feedforward system at the CLIC test facility CTF3, with \(>23\)~MHz bandwidth 
+and a 
 total hardware latency of 100~ns. New phase monitors with 
 30~fs resolution, 20~kW amplifiers with 47~MHz bandwidth, and electromagnetic 
 kickers have been designed and installed for the system. The system utilises a 
@@ -145,7 +146,11 @@ stability must be \(0.2^\circ\)~at~12~GHz (around 50~fs) rms or better to limit
 the luminosity loss to below 1\% \cite{CLICCDR}.  However, the drive beam phase 
 stability cannot be guaranteed to be better than \(2^\circ\)~at~12~GHz [REF]. A 
 mechanism to improve the drive beam phase stability by an order of magnitude is 
-therefore required. 
+therefore required. The correction must be applied to the full drive beam pulse 
+length and have a bandwidth exceeding 17.5~MHz to achieve this 
+\cite{Gerber2015}. Higher frequency errors are filtered as a consequence of the 
+drive beam recombination process, and by the accelerating structures 
+\cite{Gerber2015}.
 
 \textcolor{red}{Other machines, such as XFELs, have similar beam phase 
 	stability 
@@ -199,33 +204,29 @@ Downstream of the chicane another phase monitor is placed to measure the
 effects of the correction.
 
 The beam time of flight between the upstream phase monitor and the first kicker 
-in the chicane is 380~ns. By bypassing the \textcolor{red}{combiner ring (CR) 
-and TL1 transfer 
-line} (see Fig.~\ref{fig:pffLayout}) the total cable length required to 
-transport signals between the monitor and kickers is shorter, approximately 
-250~ns. The PFF correction in the chicane can therefore be applied to the same 
+in the chicane is 380~ns. The layout of CTF3  means the total cable length 
+required to transport signals between the monitor and kickers can be shorter, 
+by bypassing some of the rings and transfer lines in the complex (see 
+Fig.~\ref{fig:pffLayout}). The total cable length for the PFF correction 
+contributes 250~ns to the system latency. The PFF correction in the chicane can 
+therefore be applied to the same 
 bunch initially measured at the phase monitor, providing the total system 
 hardware latency is less than 130~ns. 
 
-%\textcolor{red}{Some details on CLIC system differences...One PFF system will 
-%be installed 
-%in each decelerator sector (24 PFF 
-%	systems per drive beam)...C-shaped chicane instead...}
-
-%\textcolor{red}{CLIC hardware, bandwidth requirements and how they compare to  
-%CTF3. The PFF system poses many challenges, particularly in terms of the 
-%hardware 
-%	bandwidth (\textgreater17.5~MHz \cite{Gerber2015}), power (500~kW 
-%	amplifiers) 
-%	and latency requirements.}
-
 The PFF system presents a significant hardware challenge, in particular in 
-terms of the power and bandwidth requirements for the kicker amplifiers, and 
-the resolution of the phase monitors. A low latency digitiser and feedforward 
-controller is also required. New 
+terms of the power, latency and bandwidth requirements for the kicker 
+amplifiers, and the resolution and bandwidth of the phase monitors. A low 
+latency digitiser and feedforward controller is also required. New 
 components have been designed and built for the prototype at CTF3, and a 
 summary of their parameters in comparison to the CLIC requirements is shown in 
 Table~\ref{tab:pffspecs}. 
+The main differences between the CLIC and CTF3 systems result from the 
+different drive beam energies (2.4~GeV at CLIC, 135~MeV at CTF3), and scales of 
+the two facilities. Higher power amplifiers (500~kW rather than 20~kW) are 
+required at CLIC, which may be achieved by combining the output of multiple 
+modules similar to the CTF3 design [REF]. CLIC also requires the 
+synchronisation of multiple PFF system distributed along the 50~km facility, 
+which is not addressed by the CTF3 prototype (proposals can be found in [REF]).
 
 \begin{table}
 	\caption{\label{tab:pffspecs}
@@ -249,88 +250,87 @@ Table~\ref{tab:pffspecs}.
 \end{ruledtabular}
 \end{table}
 
-\textcolor{red}{The main differences between the CTF3 and CLIC systems:
-48 systems at CLIC (one per decelerator sector) - synchronisation between 
-systems not addressed at CTF3.
-C-shaped correction chicane with 16 kickers
-CLIC drive beam much higher energy, so much higher power requirements}
-
-\textcolor{red}{Correction bandwidth requirement of 17.5~MHz derived from 
-\cite{Gerber2015}... 
-Higher frequency errors damped by combination process and accelerating 
-cavities...}
 
 %\subsection{\label{ss:hardware}Hardware}
 
 %The PFF system uses three phase monitors, two electromagnetic kickers, kicker 
-amplifiers and a digitiser/feedforward controller.
+%amplifiers and a digitiser/feedforward controller.
 
-The three phase monitors used at CTF3 \cite{phMonEuCard} are designed and built 
-by INFN 
-Frascati, with the 
-associated electronics built by CERN. The monitors are 12~GHz resonating 
-cavities with a dipole and monopole mode present. The output from opposing 
-vertical pairs of feedthroughs are summed in hybrids to create a position 
-independent signal. This signal is split and mixed with a reference 12~GHz 
-signal in eight separate mixers. The output from the eight mixers is combined, 
-allowing a resolution of \(0.12^\circ\) to be 
-achieved whilst maintaining linearity between \(\pm70^\circ\) [REF]. The quoted 
-resolution 
-is determined by 
-comparing the measurements of the two adjacent upstream monitors (installed in 
-the CT 
-line, see Fig.~\ref{fig:pffLayout}). \textcolor{red}{More details: cylindrical 
-cavities so big with notch filters, mixed with 3GHz reference multiplied to 
-12GHz etc.}
+The three phase monitors used at CTF3 \cite{phMonEuCard} are designed and 
+constructed by INFN Frascati, with the associated electronics built by CERN. 
+The phase monitors are cylindrical cavities with an aperture of 23~mm and a 
+length of 19~cm. 
+Notch filters, small ridges, in the cavity create a resonating 
+volume at 12~GHz, whilst also reflecting stray fields.
+The fields induced by the beam traversing the cavity contain a position 
+independent monopole mode and a position dependent dipole mode. The induced 
+fields are extracted in an opposing pair of feedthroughs on the top and bottom 
+of the cavity. The unwanted position dependence is removed by summing the 
+output from each feedthrough in a hybrid. 
+To extract the phase dependence of the beam signal the output from the hybrids 
+is mixed with a 12~GHz reference signal, derived from a 3~GHz source 
+time-locked to CTF3 and common to all three phase monitors.
+In the electronics for each phase monitor the beam and reference signals are 
+split between eight separate mixers, with the output from each combined to give 
+the final phase dependent outputs. This has allowed a resolution of 
+\(0.12^\circ\), or about 30~fs, to be achieved whilst maintaining linearity 
+between \(\pm70^\circ\) [REF]. The quoted resolution 
+is determined by comparing the measurements of the two adjacent upstream 
+monitors (see Fig.~\ref{fig:pffLayout}).
+
+The kicker amplifiers \cite{RobertsThesis} have been designed and constructed 
+by the John Adams Institute/Oxford University. They have a modular design, 
+consisting of a central control module, and two drive and terminator modules 
+(one per kicker). The control module distributes power and input signals to the 
+drive modules. The 20~kW drive modules consist of low voltage Si FETs driving 
+high voltage SiC FETs, and for an input voltage of \(\pm2\)~V give an output of 
+up to \(\pm700\)~V. The output is linear within 3\% for input voltages between 
+\(\pm1.2\)~V, and has a bandwidth of 47~MHz for small signal variations up to 
+20\% max output. For larger signal variations the bandwidth is slew rate 
+limited. After being applied to the kicker strips, the drive voltage returns to 
+the amplifier, where it is monitored and terminated on the terminator modules.
 
 The two electromagnetic stripline kickers \cite{kickerIPAC11} were also 
-designed and built by INFN 
-Frascati,  
-and are based on the DAFNE design [REF]. Each kicker is approximately 1~m in 
-length, 
-with a horizontal strip separation of 40~mm. A voltage of 1.26~kV applied to 
-the 
-downstream end of the kicker strips yields a horizontal deflection of 1~mrad 
-for the 135~MeV CTF3 beam. \textcolor{red}{more details - tapering? Move after 
-amplifier and state actual max deflection?}
-
-The kicker amplifiers \cite{RobertsThesis} have been designed and built by the 
-John Adams 
-Institute/Oxford University. The 20~kW amplifiers consist of low voltage Si 
-FETs 
-driving high voltage SiC FETs, and for 
-an input voltage of \(\pm2\)~V give an output of up to \(\pm700\)~V. The 
-amplifier response is linear within 
-3\% for input voltages between \(\pm1.2\)~V, then starts to saturate. The 
-output 
-has a bandwidth of 47~MHz for small signal variations up to 20\% max output, 
-and is slew rate limited for larger variations.
+designed and built by INFN Frascati,  and are based on the DAFNE design [REF]. 
+Each kicker is approximately 1~m in length, and has an internal diameter of 
+40~mm between the two strips placed along the horizontal walls of the structure.
+The kickers are designed to give a fast response of a few ns to the input 
+signal, and to give high kick efficiency. The strips have tapered tapered ends 
+to reduce beam coupling impedance.
+A voltage of 700~V, the maximum output of the amplifiers, applied to the 
+downstream ends of the kicker strips yields a horizontal deflection of 1~mrad 
+for the 135~MeV CTF3 beam.
 
 Finally, the Feedforward digitiser and controller (FONT5a board) 
 \cite{RobertsThesis} was also 
 designed and built by John Adams Institute/Oxford University. This digitises 
-the 
-processed phase monitor signals and then calculates and outputs the appropriate 
-voltage with which to drive the amplifier in order to correct the phase. The 
-board consists of a Virtex-5 field programmable gate array (FPGA), nine 14-bit 
-analogue to digital converters (ADCs) clocked at 357~MHz, and four digital to 
-analogue converters (DACs). The parameters of the correction, such as the 
-system timing and gain, are controlled on the board via a LabVIEW data 
-acquisition and control system. \textcolor{red}{mention board latency? ref a 
-font paper/ip feedback?}
+the processed phase monitor signals and then calculates and outputs the 
+appropriate voltage with which to drive the amplifier in order to correct the 
+phase. The board consists of a Virtex-5 field programmable gate array (FPGA), 
+nine 14-bit analogue to digital converters (ADCs) clocked at 357~MHz, and four 
+digital to analogue converters (DACs). The parameters of the correction, such 
+as the system timing and gain, are controlled on the board via a LabVIEW data 
+acquisition and control system. The FONT5a board also controls the correction 
+timing. The combined hardware latency for the PFF system is approximately 
+100~ns, and the output from the FONT5a board is delayed by an additional 30~ns 
+so that the drive voltage from the amplifiers and the beam arrive at the 
+kickers synchronously. %(so the total system latency including 250~ns cable 
+%transit times is equal to the 380~ns beam time of flight between the upstream 
+%phase monitor and the first kicker in the chicane).
 
-The combined hardware latency for the PFF system is approximately 100~ns. The 
-output from the FONT5a board is delayed by 30~ns so that the drive voltage from 
-the amplifiers and the beam arrive at the kickers synchronously.
+%\subsection{\label{ss:optics}Chicane Optics}
 
-\subsection{\label{ss:optics}Chicane Optics}
-
-The PFF system places additional constraints on the optics of the correction 
+As well as the hardware challenges, the PFF system places additional 
+constraints on the optics of the correction 
 chicane, and also on the beam lines between the upstream phase monitor and the 
-chicane. These ensure the maximum possible phase shift per volt applied to the 
+chicane. 
+
+These ensure the maximum possible phase shift per volt applied to the 
 kickers without degrading the transverse beam orbit and beam size after the 
 chicane, and high correlation between the initial (uncorrected) upstream and 
 downstream phase.
+
+\textcolor{red}{Mention CLIC chicane is a different shape}
 
 The correction range of the PFF system is defined by the kicker design, the 
 maximum output voltage of the kicker amplifiers, and the optics transfer matrix 
