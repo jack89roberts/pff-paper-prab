@@ -28,7 +28,7 @@ superscriptaddress,
 \usepackage{verbatim}
 
 %\usepackage{hyperref}% add hypertext capabilities
-%\usepackage[mathlines]{lineno}% Enable numbering of tex t and display math
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
 
 %\usepackage[showframe,%Uncomment any one of the following lines to test 
@@ -43,7 +43,7 @@ superscriptaddress,
 
 %\preprint{APS/123-QED}
 
-\title{Arrival Time Stabilisation of a Relativistic Electron Beam at 
+\title{High Bandwidth Arrival Time Stabilisation of an Electron Beam at 
 the 50~fs Level}
 
 \author{J.~Roberts}
@@ -123,17 +123,17 @@ drive beam recombination process, and by the accelerating structures
 Other machines, such as XFELs, have similar beam phase stability 	
 requirements to CLIC. At FLASH, DESY, these requirements have been met	using 
 an RF phase and power feedback based on the measurement of electro-optic beam 
-arrival time monitors \cite{flashPRL}. However, the CLIC drive beam presents a 
-different set of challenges. In particular, FLASH has 1~MHz bunch spacing and a 
-500~ms beam pulse, whereas the CLIC drive beam has 12~GHz bunch spacing and 
-240~ns pulse length. A feedback with a latency of several microseconds is 
-therefore not suitable for CLIC.
+arrival time monitors [REF]. However, the CLIC drive beam presents a different 
+set of challenges. In particular, FLASH has 1~MHz bunch spacing and a 500~ms 
+beam pulse, whereas the CLIC drive beam has 12~GHz bunch spacing and 240~ns 
+pulse length. A feedback with a latency of several microseconds is therefore 
+not suitable for CLIC.
 
 CLIC instead proposes a drive beam ``phase feedforward'' (PFF) 
 system. A prototype PFF system has been designed, commissioned and operated at 
 the CLIC test facility CTF3, at CERN, to prove its feasibility. The prototype 
-system follows the same concept as the CLIC scheme. CTF3 provides a 135~MeV 
-electron beam bunched at 3~GHz with a 
+system follows the same concept as the CLIC scheme, and is the focus 
+of this work. CTF3 provides a 135~MeV electron beam bunched at 3~GHz with a 
 pulse length of 1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz 
 [REF]. All phases quoted in the paper are given in degrees at 12~GHz, as 
 relevant for CLIC.
@@ -143,44 +143,47 @@ relevant for CLIC.
 	%how to 
 	%import EPS art
 	\caption{\label{fig:pffLayout}Schematic of the PFF prototype at CTF3, 
-	showing the phase monitors (\(\phi_1\) , 
+	showing the approximate location of the phase monitors (\(\phi_1\) , 
 	\(\phi_2\) and \(\phi_3\)) and
-		 kickers (K1 and K2). The black box “PFF” represents the calculation 
+		the kickers (K1 and K2). The black box “PFF” represents the calculation 
 		and output of the correction, including the phase monitor
-		electronics, feedforward controller and kicker amplifiers.
-		Dashed lines indicate beam lines that are not used during PFF 
-		operation. 
-		%Bunches arriving early at \(\phi_1\) are directed on to longer paths 
-		%in the chicane (such as the blue trajectory), whereas bunches arriving 
-		%late are directed on to a shorter path (red trajectory). 
-		}
+		electronics, feedforward controller and kicker amplifiers. A bunch 
+		arriving early at \(\phi_1\) is directed on to a longer path in the
+		chicane
+		using the kickers (blue trajectory), whereas a bunch arriving late will 
+		be directed on to a shorter path (red trajectory). }
 \end{figure}
 
 A schematic of the prototype PFF system is shown in Fig.~\ref{fig:pffLayout}. 
 The system corrects the phase using two electromagnetic kickers installed 
 before the first and last dipole in a four bend, dog-leg shaped chicane. The 
-beam's path length through the chicane depends on the voltage applied to the 
-kickers. Bunches arriving early at the upstream 
-phase monitor are deflected on to longer trajectories 
+beam's path length through the chicane depends on the magnitude and polarity of 
+the voltage applied to the kickers. The phase is measured using a monitor 
+upstream of the chicane, and then corrected by setting the kicker voltage to 
+deflect bunches arriving early at the phase monitor on to longer trajectories 
 in the chicane, and bunches arriving late on to shorter trajectories. 
 Downstream of the chicane another phase monitor is placed to measure the 
 effects of the correction.
 
 The beam time of flight between the upstream phase monitor and the first kicker 
-in the chicane is 380~ns. The total cable length for the PFF correction signals 
-is shorter, around 250~ns (see Fig.~\ref{fig:pffLayout}). The PFF correction in 
-the chicane can therefore be applied to the same bunch initially measured at 
-the phase monitor, providing the total system hardware latency is less than 
-130~ns. 
+in the chicane is 380~ns. The layout of CTF3  means the total cable length 
+required to transport signals between the monitor and kickers can be shorter, 
+by bypassing some of the rings and transfer lines in the complex (see 
+Fig.~\ref{fig:pffLayout}). The total cable length for the PFF correction 
+contributes 250~ns to the system latency. The PFF correction in the chicane can 
+therefore be applied to the same bunch initially measured at the phase monitor, 
+providing the total system hardware latency is less than 130~ns. 
 
 The PFF system presents a significant hardware challenge, in particular in 
 terms of the power, latency and bandwidth requirements for the kicker 
 amplifiers, and the resolution and bandwidth of the phase monitors. A low 
-latency digitiser and feedforward controller is also required.
-Table~\ref{tab:pffspecs} compares the requirements of the CLIC system and their 
-corresponding values at CTF3. 
-The main differences result from the different drive beam energies, and scales 
-of the two facilities. Higher power amplifiers (500~kW rather than 20~kW) are 
+latency digitiser and feedforward controller is also required. New 
+components have been designed and built for the prototype at CTF3, and a 
+summary of their parameters in comparison to the CLIC requirements is shown in 
+Table~\ref{tab:pffspecs}. 
+The main differences between the CLIC and CTF3 systems result from the 
+different drive beam energies (2.4~GeV at CLIC, 135~MeV at CTF3), and scales of 
+the two facilities. Higher power amplifiers (500~kW rather than 20~kW) are 
 required at CLIC, which may be achieved by combining the output of multiple 
 modules similar to the CTF3 design [REF]. CLIC also requires the 
 synchronisation of multiple PFF systems distributed along the 50~km facility, 
@@ -194,7 +197,6 @@ which is not addressed by the CTF3 prototype (proposals can be found in [REF]).
 	\begin{tabular}{lcc}
 		 & CLIC & CTF3 \\
 		\hline
-		Drive Beam Energy & 2.4~GeV & 135~MeV \\
 		No. Systems & 48 & 1 \\
 		Kickers per Chicane & 16 & 2 \\
 		Power of Kicker Amplifiers & 500~kW & 20~kW \\
@@ -209,7 +211,8 @@ which is not addressed by the CTF3 prototype (proposals can be found in [REF]).
 \end{ruledtabular}
 \end{table}
 
-The three phase monitors used at CTF3 \cite{phMonEuCard} are designed and 
+\textcolor{red}{The three phase monitors used at CTF3 \cite{phMonEuCard} are 
+designed and 
 constructed by INFN Frascati, with the associated electronics built by CERN. 
 The phase monitors are cylindrical cavities with an aperture of 23~mm and a 
 length of 19~cm. 
@@ -229,7 +232,7 @@ the final phase dependent outputs. This has allowed a resolution of
 \(0.12^\circ\), or about 30~fs, to be achieved whilst maintaining linearity 
 between \(\pm70^\circ\) [REF]. The quoted resolution 
 is determined by comparing the measurements of the two adjacent upstream 
-monitors (see Fig.~\ref{fig:pffLayout}).
+monitors (see Fig.~\ref{fig:pffLayout}).}
 
 The kicker amplifiers \cite{RobertsThesis} have been designed and constructed 
 by the John Adams Institute/Oxford University. They have a modular design, 
@@ -240,7 +243,8 @@ high voltage SiC FETs, and for an input voltage of \(\pm2\)~V give an output of
 up to \(\pm700\)~V. The output is linear within 3\% for input voltages between 
 \(\pm1.2\)~V, and has a bandwidth of 47~MHz for small signal variations up to 
 20\% max output. For larger signal variations the bandwidth is slew rate 
-limited.
+limited. After being applied to the kicker strips, the drive voltage returns to 
+the amplifier, where it is monitored and terminated on the terminator modules.
 
 The two electromagnetic stripline kickers \cite{kickerIPAC11} were also 
 designed and built by INFN Frascati,  and are based on the DAFNE design [REF]. 
@@ -253,72 +257,80 @@ A voltage of 700~V, the maximum output of the amplifiers, applied to the
 downstream ends of the kicker strips yields a horizontal deflection of 
 0.56~mrad for the 135~MeV CTF3 beam.
 
-The Feedforward digitiser and controller (FONT5a board) 
+Finally, the Feedforward digitiser and controller (FONT5a board) 
 \cite{RobertsThesis} was also 
 designed and built by John Adams Institute/Oxford University. This digitises 
 the processed phase monitor signals and then calculates and outputs the 
-appropriate amplifier input voltage. The FONT5a board also controls the 
-correction timing. It consists of a Virtex-5 field programmable gate array 
-(FPGA), nine 14-bit analogue to digital converters (ADCs) clocked at 357~MHz, 
-and four digital to analogue converters (DACs). The combined hardware and 
-firmware latency for the PFF system is approximately 100~ns. The output from 
-the FONT5a board is delayed by 30~ns to synchronise the 
-correction at the kicker with the beam \cite{RobertsThesis}.
+appropriate voltage with which to drive the amplifier in order to correct the 
+phase. The FONT5a board also controls the correction 
+timing. The board consists of a Virtex-5 field programmable gate array (FPGA), 
+nine 14-bit analogue to digital converters (ADCs) clocked at 357~MHz, and four 
+digital to analogue converters (DACs). \textcolor{red}{The parameters of the 
+correction, such 
+as the system gain, are controlled on the board via a LabVIEW data 
+acquisition and control system.} The combined hardware latency for the PFF 
+system is approximately 
+100~ns, and the output from the FONT5a board is delayed by an additional 30~ns 
+so that the drive voltage from the amplifiers and the beam arrive at the 
+kickers synchronously. The precise correction timing has been verified using 
+beam based measurements \cite{RobertsThesis}.
 
 As well as the hardware challenges, the PFF system places additional 
 constraints on the optics of the correction 
 chicane, and also on the beam lines between the upstream phase monitor and the 
-chicane. %At CTF3 these issues are compounded by being constrained by the 
-%pre-existing layout of the facility, in particular the correction chicane. At 
-%CLIC a dedicated 4 bend, C-shaped chicane will be used \cite{CLICCDR}.
+chicane. At CTF3 these issues are compounded by being constrained by the 
+pre-existing layout of the facility, in particular the correction chicane. At 
+CLIC a dedicated 4 bend, C-shaped chicane will be used \cite{CLICCDR}.
 
 The optics transfer matrix coefficient \(R_{52}\) between the kickers relates 
 the change in path length through the chicane per unit 
 deflection at the first kicker. 
 With an \(R_{52}\) value of \(0.74\)~m in the chicane optics at 
-CTF3 \cite{RobertsThesis} the expected correction range (path length change) of 
-the PFF system is \(\pm400~\mathrm{\mu m}\), or \(\pm6^\circ\), considering the 
-maximum deflection of \(\pm0.56\)~mrad from the kickers.
-The measured phase shift in the chicane versus the amplifier input voltage is 
+CTF3 [REF] the expected correction range (path length change) of the PFF system 
+is \(\pm400~\mathrm{\mu m}\), or \(\pm6^\circ\), considering the maximum 
+deflection of \(\pm0.56\)~mrad from the kickers.
+\textcolor{red}{The measured phase shift in the chicane versus the amplifier 
+input voltage is 
 shown in Fig.~\ref{fig:corrRange}, and agrees with the expected range. 
-%However, the response of the amplifier and therefore the phase shift is 
-%non-linear. The correction algorithm assumes linearity, but this has a 
-%negligible effect compared to the limitations placed by the
-%upstream-downstream phase correlation, discussed below.
+However, the response of the amplifier and therefore the phase shift is 
+non-linear. The correction algorithm assumes linearity, but this has a 
+negligible effect compared to the limitations placed by the
+upstream-downstream phase correlation, discussed below.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/corrRange}
-	\caption{\label{fig:corrRange}Downstream phase vs. the kicker amplifier 
-	input voltage. Standard errors on the measured phase are shown.}
+	\caption{\label{fig:corrRange}\textcolor{red}{Downstream phase vs. the 
+	kicker amplifier 
+	input voltage. Standard errors on the measured phase are shown.}}
 \end{figure}
 
-The PFF system also should not change the beam orbit after the chicane. 
-%The chicane optics are designed so that the second kicker closes the orbit 
-%bump created by the first kicker.
+\textcolor{red}{The PFF system also should not change the beam orbit after the 
+chicane. The 
+chicane optics are designed so that the second kicker closes the orbit bump 
+created by the first kicker.
 Fig.~\ref{fig:orbClos} shows the horizontal beam orbit in the region 
 of the chicane for the maximum and minimum kick. The closure in 
 the BPMs following the chicane is better than 0.1~mm, compared to a maximum 
-offset of 1.5~mm inside the chicane.
+offset of 1.5~mm inside the chicane.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Horizontal orbit in and around the TL2 chicane 
-	at maximum (blue) and 
-	minimum (red) 
+	\caption{\label{fig:orbClos}\textcolor{red}{Horizontal orbit in and around 
+	the TL2 chicane at maximum (blue) and minimum (red) 
 	input to the kicker amplifiers. Markers show the measured position in beam 
 	position monitors, and dashed lines the predicted orbit using the 
-	CTF3 MADX model and hardware parameters.}
+	CTF3 MADX model and hardware parameters.}}
 \end{figure}
 
 One of the key challenges in operating the PFF prototype at CTF3 has been 
 obtaining high correlation between the initial, uncorrected, upstream and 
-downstream phase. The theoretical limit on the corrected 
+downstream phase. \textcolor{red}{The theoretical limit on the corrected 
 downstream phase jitter is given by
 \(\sigma_{\mathrm{PFF}}=\sigma_d \sqrt{1-\rho_{ud}^2}\), where 
 \(\phi_{\mathrm{PFF}}\) is the corrected downstream phase, \(\sigma_u\) and 
 \(\sigma_d\) are the initial upstream and downstream 
 phase jitter respectively, and \(\rho_{ud}\) is the correlation between the 
-upstream and downstream phase. A correlation of 97\% is required to reduce a 
+upstream and downstream phase.} A correlation of 97\% is required to reduce a 
 typical initial 
 phase jitter of \(0.8^\circ\) at CTF3 to the target of \(0.2^\circ\). 
 
@@ -472,23 +484,25 @@ within the correction range, and a reduction of the higher order phase-energy
 dependences in the machine optics, the PFF system could achieve CLIC-level 
 phase stability continuously.
 
-The PFF system has also been operated 
+\textcolor{red}{The PFF system has also been operated 
 whilst intentionally varying the incoming mean phase, as shown in 
 Fig.~\ref{fig:wiggle}. It removes the additional phase variations 
 and achieves more than a factor 5 reduction in downstream phase jitter, from 
 \(1.71\pm0.07^\circ\) to \(0.32\pm0.01^\circ\). The magnitude of 
 the initial phase jitter is more comparable to the conditions expected at CLIC 
-in this case.
+in this case.}
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/wiggle}
-	\caption{\label{fig:wiggle}Mean downstream phase with the PFF system off 
+	\caption{\textcolor{red}{\label{fig:wiggle}Mean downstream phase with the 
+	PFF system off 
 		(blue) and on (red) vs. time, with additional phase variations added to 
 		the 
-		incoming phase.}
+		incoming phase.}}
 \end{figure}
 
-To conclude, CLIC requires a PFF system to reduce the drive beam phase jitter 
+\textcolor{red}{To conclude, CLIC requires a PFF system to reduce the drive 
+beam phase jitter 
 by an order of magnitude, from \(2.0^\circ\) to \(0.2^\circ\)~at~12~GHz, or 
 better than 50~fs stability. A prototype of the system has been 
 in operation at the CLIC test facility CTF3, and corrects the beam phase by 
@@ -502,7 +516,7 @@ correction can be directly applied to the same bunch initially measured at the
 monitor. New optics for the correction chicane and other beam lines at CTF3 
 have been 
 developed to yield the desired phase shifting behaviour and ensure high 
-correlation between the initial upstream and downstream phase.
+correlation between the initial upstream and downstream phase.}
 
 The prototype system has demonstrated \(0.20\pm0.01^\circ\) pulse-to-pulse 
 phase jitter on a time scale of ten minutes, verifying the feasibility of the 
