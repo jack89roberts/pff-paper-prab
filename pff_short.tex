@@ -96,7 +96,7 @@ CLIC-level phase stability, reducing an initial rms phase variation of
                               %display desired
 \maketitle
 
-The Compact Linear Collider, CLIC, \cite{CLICCDR} is a proposal for a future 
+The Compact Linear Collider, CLIC, \cite{CLICCDR} is a proposed future 
 linear electron--positron collider. It uses a novel two beam acceleration 
 concept to achieve a high accelerating gradient of 100~MV/m 
 and a collision energy of up to 3 TeV. In this concept the 12~GHz RF power used 
@@ -133,10 +133,11 @@ FLASH has 1~MHz bunch spacing and a
 therefore not suitable for CLIC.
 
 Instead, a drive beam ``phase feedforward'' (PFF) 
-system is proposed. A prototype PFF system has been designed, commissioned and 
+system is proposed. A prototype PFF system, following the same concept as the 
+CLIC proposal, has been designed, commissioned and 
 operated at 
-the CLIC test facility CTF3, at CERN, to prove its feasibility. The prototype 
-system follows the same concept as the CLIC scheme. CTF3 provides a 135~MeV 
+the CLIC test facility CTF3, at CERN, to prove its feasibility. CTF3 provides a 
+135~MeV 
 electron beam bunched at 3~GHz with a 
 pulse length of 1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz 
 [REF]. All phases quoted in the paper are given in degrees at 12~GHz, as 
@@ -188,7 +189,7 @@ of the two facilities. Higher power amplifiers (500~kW rather than 20~kW) are
 required at CLIC, which may be achieved by combining the output of multiple 
 modules similar to the CTF3 design [REF]. CLIC also requires the 
 synchronisation of multiple PFF systems distributed along the 50~km facility, 
-which is not addressed by the CTF3 prototype (proposals can be found in [REF]).
+which is not addressed by the CTF3 prototype (see [REF]).
 
 \begin{table}
 	\caption{\label{tab:pffspecs}
@@ -254,7 +255,8 @@ A voltage of 700~V, the maximum output of the amplifiers, applied to the
 downstream ends of the kicker strips yields a horizontal deflection of 
 0.56~mrad for the 135~MeV CTF3 beam.
 
-The feedforward controller (FONT5a board) digitises the processed phase monitor 
+The feedforward controller (FONT5a board) \cite{RobertsThesis} digitises the 
+processed phase monitor 
 signals and then calculates and outputs the appropriate amplifier input 
 voltage. The FONT5a board also controls the correction timing. It consists of a 
 Virtex-5 field programmable gate array (FPGA), nine 14-bit analogue to digital 
@@ -273,12 +275,15 @@ chicane. %At CTF3 these issues are compounded by being constrained by the
 The optics transfer matrix coefficient \(R_{52}\) between the kickers relates 
 the change in path length through the chicane per unit 
 deflection at the first kicker. 
-With an \(R_{52}\) value of \(0.74\)~m in the chicane optics at 
-CTF3 \cite{RobertsThesis} the expected correction range (path length change) of 
+With an \(R_{52}\) value of \(0.74\)~m in the chicane optics 
+\cite{RobertsThesis} the 
+expected
+correction range (path length change) of 
 the PFF system is \(\pm400~\mathrm{\mu m}\), or \(\pm6^\circ\), considering the 
 maximum deflection of \(\pm0.56\)~mrad from the kickers.
 The measured phase shift in the chicane versus the amplifier input voltage is 
 shown in Fig.~\ref{fig:corrRange}, and agrees with the expected range. 
+
 %However, the response of the amplifier and therefore the phase shift is 
 %non-linear. The correction algorithm assumes linearity, but this has a 
 %negligible effect compared to the limitations placed by the
@@ -291,22 +296,19 @@ shown in Fig.~\ref{fig:corrRange}, and agrees with the expected range.
 \end{figure}
 
 The PFF system also should not change the beam orbit after the chicane. 
-%The chicane optics are designed so that the second kicker closes the orbit 
-%bump created by the first kicker.
-Fig.~\ref{fig:orbClos} shows the horizontal beam orbit in the region 
-of the chicane for the maximum and minimum kick. The closure in 
-the BPMs following the chicane is better than 0.1~mm, compared to a maximum 
-offset of 1.5~mm inside the chicane.
+The chicane optics are designed so that the second kicker closes the orbit 
+bump created by the first kicker \cite{RobertsThesis}.
+%Fig.~\ref{fig:orbClos} shows the horizontal beam orbit in the region 
+%of the chicane for the maximum and minimum kick. The orbit closure following 
+%the chicane is better than 0.1~mm.
+%, compared to a maximum offset of 1.5~mm inside the chicane.
 
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/orbClos}
-	\caption{\label{fig:orbClos}Horizontal orbit in and around the TL2 chicane 
-	at maximum (blue) and 
-	minimum (red) 
-	input to the kicker amplifiers. Markers show the measured position in beam 
-	position monitors, and dashed lines the predicted orbit using the 
-	CTF3 MADX model and hardware parameters.}
-\end{figure}
+%\begin{figure}
+%	\includegraphics[width=\columnwidth]{figs/orbClos}
+%	\caption{\label{fig:orbClos}Horizontal orbit in the correction chicane 
+%	at maximum (blue) and minimum (red) kick. Markers with standard error bars 
+%	show the measured orbit, and dashed lines the expected nominal orbit.}
+%\end{figure}
 
 One of the key challenges in operating the PFF prototype at CTF3 has been 
 obtaining high correlation between the initial, uncorrected, upstream and 
@@ -332,15 +334,14 @@ jitter.
 %resulting downstream phase stability and upstream-downstream phase 
 %correlation. 
 Meanwhile, the dominant source of uncorrelated downstream phase jitter at CTF3 
-is beam 
-energy jitter being transformed in to phase jitter. 
+is beam energy jitter being transformed in to phase jitter. 
 %in the transfer lines between the upstream and downstream phase monitors.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
 	%EPS art
 	\caption{\label{fig:r56Scan}Downstream (red points) and upstream (blue 
-		points) phase jitter vs. the \(R_{56}\) value in the set TL1 optics. 
+		points) phase jitter vs. the \(R_{56}\) value in TL1. 
 		}
 \end{figure}
 
@@ -360,20 +361,22 @@ downstream phase jitter is reduced to the same level as the upstream jitter.
 %amplification in the downstream phase jitter with respect to the upstream 
 %jitter. The upstream-downstream phase correlation is also increased, from 
 %below 40\% to above 95\%. 
-However, a large second order phase-energy dependence was 
-also identified and 
-this remains uncorrected. This leads to a degradation in upstream-downstream 
-phase correlation if there are drifts in beam energy. Energy drifts resulting 
-from klystron trips and RF power drifts at CTF3 have made it difficult to 
-maintain high phase correlations for timescales longer than 10~minutes.
+However, a large second order phase-energy dependence remains uncorrected and 
+this leads to a degradation in upstream-downstream phase correlation if there 
+are drifts in beam energy. 
+%Energy drifts resulting 
+%from klystron trips and RF power drifts at CTF3 have made it difficult to 
+%maintain high phase correlations for timescales longer than 10~minutes.
 
 Gain scans have been completed to verify the setup of the system and derive the 
-optimal gain, as shown in Fig.~\ref{fig:gScan}. With stable incoming beam 
-conditions the corrected downstream phase jitter 
-should depend quadratically on the gain \cite{RobertsThesis}. Taking in to 
+optimal gain, as shown in Fig.~\ref{fig:gScan}. 
+%With stable incoming beam 
+%conditions the corrected downstream phase jitter 
+%should depend quadratically on the gain \cite{RobertsThesis}. 
+Taking in to 
 account drifts in the initial upstream-downstream phase correlation and 
-downstream phase jitter during the scan, which modify the gain--jitter 
-relationship, the achieved and predicted performance agree within the error at 
+downstream phase jitter during the scan, the achieved and predicted performance 
+agree within the error at 
 all gains. At CTF3 the optimal system gain is typically in the range 1.0--1.2, 
 being larger than unity when there is a small amplification in the downstream 
 phase jitter with respect to the upstream phase jitter \cite{RobertsThesis}.
@@ -463,7 +466,7 @@ theoretical prediction (considering the initial correlation and jitter) of
 This level of stability could not be maintained for longer periods due to 
 CTF3's drifting RF sources, eventually leading to degraded 
 upstream-downstream phase correlation and phase drifts outside the PFF 
-correction range, as previously mentioned. \(0.30^\circ\) phase jitter has been 
+correction range. \(0.30^\circ\) phase jitter has been 
 achieved in 20~minute datasets. With suitable feedbacks to keep the phase 
 within the correction range, and a reduction of the higher order phase-energy 
 dependences in the machine optics, the PFF system could achieve CLIC-level 
@@ -510,7 +513,7 @@ beam conditions, in particular beam energy, which would be better controlled in
 any future application at CLIC.
 
 \begin{acknowledgments}
-	We wish to acknowledge Alessandro Zolla and Giancarlo Sensolini 
+	We wish to acknowledge Alessandro Zolla and Giancarlo Sensolini
 	for their work on the monitor and kicker mechanical design,
 	as well as everyone involved in the operation of CTF3 for their 
 	help and support in realising the PFF system.
