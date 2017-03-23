@@ -1,76 +1,56 @@
 \documentclass[%
  reprint,
-superscriptaddress,
-%groupedaddress,
-%unsortedaddress,
-%runinaddress,
-%frontmatterverbose, 
-%preprint,
-%showpacs,preprintnumbers,
-%nofootinbib,
-%nobibnotes,
-%bibnotes,
- amsmath,amssymb,
+ superscriptaddress,
+ amsmath,
+ amssymb,
  prl,
-% aps,
-%pra,
-%prb,
-%rmp,
-%prstab,
-%prstper,
-%floatfix,
 ]{revtex4-1}
 
 \usepackage{graphicx}% Include figure files
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
-\usepackage{color}
-\usepackage{verbatim}
-
-%\usepackage{hyperref}% add hypertext capabilities
-%\usepackage[mathlines]{lineno}% Enable numbering of tex t and display math
-%\linenumbers\relax % Commence numbering lines
-
-%\usepackage[showframe,%Uncomment any one of the following lines to test 
-%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
-%%text={7in,10in},centering,
-%%margin=1.5in,
-%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
-%%height=10in,a5paper,hmargin={3cm,0.8in},
-%]{geometry}
 
 \begin{document}
-
-%\preprint{APS/123-QED}
 
 \title{Arrival Time Stabilisation of a Relativistic Electron Beam at 
 the 50~fs Level}
 
 \author{J.~Roberts}
 \email{Corresponding author Jack.Roberts@cern.ch}
-\affiliation{John Adams Institute, University of Oxford}
-\affiliation{CERN, Geneva}
+\affiliation{John Adams Institute (JAI), University of Oxford, Denys Wilkinson 
+Building, Keble Road, Oxford, OX1 3RH, United Kingdom}
+\affiliation{The European Organization for Nuclear Research (CERN), Geneva 23, 
+CH-1211, Switzerland}
 
 \author{P.~Burrows}
-\affiliation{John Adams Institute, University of Oxford}
+\affiliation{John Adams Institute (JAI), University of Oxford, Denys Wilkinson 
+Building, Keble Road, Oxford, OX1 3RH, United Kingdom}
 
 \author{G.~Christian}
-\affiliation{John Adams Institute, University of Oxford}
+\affiliation{John Adams Institute (JAI), University of Oxford, Denys Wilkinson 
+Building, Keble Road, Oxford, OX1 3RH, United Kingdom}
 
 \author{R.~Corsini}
-\affiliation{CERN, Geneva}
+\affiliation{The European Organization for Nuclear Research (CERN), Geneva 23, 
+CH-1211, Switzerland}
 
 \author{A.~Ghigo}
-\affiliation{INFN/LNF, Frascati}
+\affiliation{Laboratori Nazionali di Frascati (LNFN), Via Enrico Fermi, 40, 
+00044 
+Frascati RM, Italy}
 
 \author{F.~Marcellini}
-\affiliation{INFN/LNF, Frascati}
+\affiliation{Laboratori Nazionali di Frascati (LNFN), Via Enrico Fermi, 40, 
+00044 
+Frascati RM, Italy}
 
 \author{C.~Perry}
-\affiliation{John Adams Institute, University of Oxford}
+\affiliation{John Adams Institute (JAI), University of Oxford, Denys Wilkinson 
+Building, Keble Road, Oxford, OX1 3RH, United Kingdom}
 
 \author{P.~Skowronski}
-\affiliation{CERN, Geneva}
+\affiliation{The European Organization for Nuclear Research (CERN), Geneva 23, 
+CH-1211, Switzerland}
 
 \date{\today}
 
@@ -90,10 +70,6 @@ CLIC-level phase stability, reducing an initial rms phase variation of
 \(0.92\pm0.04^\circ\) to \(0.20\pm0.01^\circ\).
 \end{abstract}
 
-%\pacs{Valid PACS appear here}% PACS, the Physics and Astronomy
-%                             % Classification Scheme.
-%\keywords{Suggested keywords}%Use showkeys class option if keyword
-                              %display desired
 \maketitle
 
 The Compact Linear Collider, CLIC, \cite{CLICCDR} is a proposed future 
@@ -125,23 +101,17 @@ Other machines, such as XFELs, have similar beam phase stability
 requirements to CLIC. At FLASH, DESY, these requirements have been met using 
 an RF phase and power feedback based on the measurement of electro-optic beam 
 arrival time monitors \cite{flashPRL}. 
-%However, the CLIC drive beam presents a 
-%different set of challenges. In particular, 
-FLASH has 1~MHz bunch spacing and a 
-500~ms beam pulse, whereas the CLIC drive beam has 12~GHz bunch spacing and 
-240~ns pulse length. A feedback with a latency of several microseconds is 
-therefore not suitable for CLIC.
+FLASH has 1~MHz bunch spacing and a 500~ms beam pulse, whereas the CLIC drive 
+beam has 12~GHz bunch spacing and 240~ns pulse length. A feedback with a 
+latency of several microseconds is therefore not suitable for CLIC.
 
 Instead, a drive beam ``phase feedforward'' (PFF) 
 system is proposed. A prototype PFF system, following the same concept as the 
-CLIC proposal, has been designed, commissioned and 
-operated at 
+CLIC proposal, has been designed, commissioned and operated at 
 the CLIC test facility CTF3, at CERN, to prove its feasibility. CTF3 provides a 
-135~MeV 
-electron beam bunched at 3~GHz with a 
-pulse length of 1.2~\(\mathrm{\mu s}\) and a pulse repetition rate of 0.8~Hz 
-[REF]. All phases quoted in the paper are given in degrees at 12~GHz, as 
-relevant for CLIC.
+135~MeV electron beam bunched at 3~GHz with a pulse length of 1.2~\(\mathrm{\mu 
+s}\) and a pulse repetition rate of 0.8~Hz \cite{CLICCDR}. All phases quoted in 
+the paper are given in degrees at 12~GHz, as relevant for CLIC.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/ctfpffLayout}% Here is 
@@ -149,15 +119,10 @@ relevant for CLIC.
 	%import EPS art
 	\caption{\label{fig:pffLayout}Schematic of the PFF prototype at CTF3, 
 	showing the phase monitors (\(\phi_1\) , 
-	\(\phi_2\) and \(\phi_3\)) and
-		 kickers (K1 and K2). The black box “PFF” represents the calculation 
-		and output of the correction, including the phase monitor
-		electronics, feedforward controller and kicker amplifiers.
-		Dashed lines indicate beam lines that are not used during PFF 
-		operation. 
-		%Bunches arriving early at \(\phi_1\) are directed on to longer paths 
-		%in the chicane (such as the blue trajectory), whereas bunches arriving 
-		%late are directed on to a shorter path (red trajectory). 
+	\(\phi_2\) and \(\phi_3\)) and kickers (K1 and K2). The black box “PFF” 
+	represents the calculation and output of the correction, including the 
+	phase monitor electronics, feedforward controller and kicker amplifiers.
+	Dashed lines indicate beam lines that are not used during PFF operation. 
 		}
 \end{figure}
 
@@ -187,9 +152,9 @@ corresponding values at CTF3.
 The main differences result from the different drive beam energies, and scales 
 of the two facilities. Higher power amplifiers (500~kW rather than 20~kW) are 
 required at CLIC, which may be achieved by combining the output of multiple 
-modules similar to the CTF3 design [REF]. CLIC also requires the 
+modules similar to the CTF3 design. CLIC also requires the 
 synchronisation of multiple PFF systems distributed along the 50~km facility, 
-which is not addressed by the CTF3 prototype (see [REF]).
+which is not addressed by the CTF3 prototype (see \cite{CLICCDR}).
 
 \begin{table}
 	\caption{\label{tab:pffspecs}
@@ -223,7 +188,7 @@ create a resonating volume at 12~GHz, whilst also reflecting stray fields.
 The fields induced by the beam traversing the cavity contain a position 
 independent monopole mode and a position dependent dipole mode. The unwanted 
 position dependence is removed by summing the output from an opposing pair 
-of feedthroughs on the top and bottom of the cavity in a hybrid. 
+of feedthroughs, on the top and bottom of the cavity, in a hybrid. 
 To extract the beam phase the output from the hybrids 
 is mixed with a 12~GHz reference signal, derived from a 3~GHz source 
 time-locked to CTF3 and common to all three phase monitors.
@@ -266,60 +231,33 @@ approximately 100~ns. The output from the FONT5a board is delayed by an
 additional 30~ns to synchronise the correction at the kicker with the beam 
 \cite{RobertsThesis}.
 
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figs/corrRange}
+	\caption{\label{fig:corrRange}Downstream phase vs. the kicker amplifier 
+		input voltage. Standard errors on the measured phase are shown.}
+\end{figure}
+
 As well as the hardware challenges, the PFF system places additional 
 constraints on the optics of the correction 
 chicane, and also on the beam lines between the upstream phase monitor and the 
-chicane. %At CTF3 these issues are compounded by being constrained by the 
-%pre-existing layout of the facility, in particular the correction chicane. At 
-%CLIC a dedicated 4 bend, C-shaped chicane will be used \cite{CLICCDR}.
+chicane.
 The optics transfer matrix coefficient \(R_{52}\) between the kickers relates 
 the change in path length through the chicane per unit 
 deflection at the first kicker. 
 With an \(R_{52}\) value of \(0.74\)~m in the chicane optics 
-\cite{RobertsThesis} the 
-expected
-correction range (path length change) of 
+\cite{RobertsThesis} the expectedcorrection range (path length change) of 
 the PFF system is \(\pm400~\mathrm{\mu m}\), or \(\pm6^\circ\), considering the 
 maximum deflection of \(\pm0.56\)~mrad from the kickers.
 The measured phase shift in the chicane versus the amplifier input voltage is 
 shown in Fig.~\ref{fig:corrRange}, and agrees with the expected range. 
 
-%However, the response of the amplifier and therefore the phase shift is 
-%non-linear. The correction algorithm assumes linearity, but this has a 
-%negligible effect compared to the limitations placed by the
-%upstream-downstream phase correlation, discussed below.
-
-\begin{figure}
-	\includegraphics[width=\columnwidth]{figs/corrRange}
-	\caption{\label{fig:corrRange}Downstream phase vs. the kicker amplifier 
-	input voltage. Standard errors on the measured phase are shown.}
-\end{figure}
-
 The PFF system also should not change the beam orbit after the chicane. 
 The chicane optics are designed so that the second kicker closes the orbit 
 bump created by the first kicker \cite{RobertsThesis}.
-%Fig.~\ref{fig:orbClos} shows the horizontal beam orbit in the region 
-%of the chicane for the maximum and minimum kick. The orbit closure following 
-%the chicane is better than 0.1~mm.
-%, compared to a maximum offset of 1.5~mm inside the chicane.
-
-%\begin{figure}
-%	\includegraphics[width=\columnwidth]{figs/orbClos}
-%	\caption{\label{fig:orbClos}Horizontal orbit in the correction chicane 
-%	at maximum (blue) and minimum (red) kick. Markers with standard error bars 
-%	show the measured orbit, and dashed lines the expected nominal orbit.}
-%\end{figure}
 
 One of the key challenges in operating the PFF prototype at CTF3 has been 
 obtaining high correlation between the initial, uncorrected, upstream and 
 downstream phase. 
-%The theoretical limit on the corrected 
-%downstream phase jitter is given by
-%\(\sigma_{\mathrm{PFF}}=\sigma_d \sqrt{1-\rho_{ud}^2}\), where 
-%\(\phi_{\mathrm{PFF}}\) is the corrected downstream phase, \(\sigma_u\) and 
-%\(\sigma_d\) are the initial upstream and downstream 
-%phase jitter respectively, and \(\rho_{ud}\) is the correlation between the 
-%upstream and downstream phase. 
 A correlation of 97\% is required to reduce a typical initial 
 phase jitter of \(0.8^\circ\) at CTF3 to the target of \(0.2^\circ\) 
 \cite{RobertsThesis}. 
@@ -330,18 +268,13 @@ limits the maximum upstream-downstream phase correlation to
 \(98\%\) in typical conditions, and places a theoretical limit of
 \(0.17^\circ\) on the measured corrected downstream phase 
 jitter. 
-%Any beam jitter that changes the time of flight of bunches influences the 
-%resulting downstream phase stability and upstream-downstream phase 
-%correlation. 
 Meanwhile, the dominant source of uncorrelated downstream phase jitter at CTF3 
 is beam energy jitter being transformed in to phase jitter. 
-%in the transfer lines between the upstream and downstream phase monitors.
 
 \begin{figure}
-	\includegraphics[width=\columnwidth]{figs/r56Scan}% Here is how to import 
-	%EPS art
-	\caption{\label{fig:r56Scan}Downstream (red points) and upstream (blue 
-		points) phase jitter vs. the \(R_{56}\) value in TL1. 
+	\includegraphics[width=\columnwidth]{figs/r56Scan}
+	\caption{\label{fig:r56Scan}Downstream (red) and upstream (blue) phase 
+	jitter vs. the \(R_{56}\) value in TL1. 
 		}
 \end{figure}
 
@@ -352,37 +285,26 @@ transfer matrix coefficient \(R_{56}\):
 \(\phi_d\) are the upstream and downstream phase respectively.
 Optimal conditions for the PFF system are obtained when the total \(R_{56}\) 
 between the upstream and downstream monitors is zero.
-To achieve this the \(R_{56}\) value in the transfer line TL1 has been tuned to 
-compensate for non-zero \(R_{56}\) values in other lines at CTF3.
-Fig.~\ref{fig:r56Scan} shows that with an \(R_{56}\) of around 10~cm in TL1 the 
+To achieve this the \(R_{56}\) value in one of the transfer lines at CTF3 (TL1) 
+has been tuned to compensate for non-zero \(R_{56}\) values in other lines.
+Fig.~\ref{fig:r56Scan} shows that with an \(R_{56}\) of 10~cm in TL1 the 
 first order phase-energy dependence is removed and the 
 downstream phase jitter is reduced to the same level as the upstream jitter. 
-%Previously, with the original \(R_{56}=0\) optics in TL1, there is a factor 3 
-%amplification in the downstream phase jitter with respect to the upstream 
-%jitter. The upstream-downstream phase correlation is also increased, from 
-%below 40\% to above 95\%. 
-However, a large second order phase-energy dependence remains uncorrected and 
+However, a large second order phase-energy dependence remains uncorrected, and 
 this leads to a degradation in upstream-downstream phase correlation if there 
-are drifts in beam energy. 
-%Energy drifts resulting 
-%from klystron trips and RF power drifts at CTF3 have made it difficult to 
-%maintain high phase correlations for timescales longer than 10~minutes.
+are drifts in beam energy \cite{RobertsThesis}. 
 
 Gain scans have been completed to verify the setup of the system and derive the 
 optimal gain, as shown in Fig.~\ref{fig:gScan}. 
-%With stable incoming beam 
-%conditions the corrected downstream phase jitter 
-%should depend quadratically on the gain \cite{RobertsThesis}. 
-Taking in to 
-account drifts in the initial upstream-downstream phase correlation and 
-downstream phase jitter during the scan, the achieved and predicted performance 
-agree within the error at 
-all gains. At CTF3 the optimal system gain is typically in the range 1.0--1.2, 
+Taking in to account drifts in the initial upstream-downstream phase 
+correlation and downstream phase jitter during the scan, the achieved and 
+predicted performance agree within the error at all gains. 
+At CTF3 the optimal system gain is typically in the range 1.0--1.2, 
 being larger than unity when there is a small amplification in the downstream 
 phase jitter with respect to the upstream phase jitter \cite{RobertsThesis}.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{figs/gScan}% Here is how to import EPS art
+\includegraphics[width=\columnwidth]{figs/gScan}
 \caption{\label{fig:gScan}Downstream phase jitter with the PFF system on at 
 different gains. Markers show the measured phase jitter with standard error 
 bars. The shaded red region shows the expected performance given the initial 
@@ -392,15 +314,14 @@ beam conditions.}
 The PFF correction is shaped to remove phase variations along the 
 1.2~\(\mathrm{\mu s}\) CTF3 beam pulse. The predominant intra-pulse feature at 
 CTF3 is a roughly parabolic ``phase sag'' of \(40^\circ\) peak-to-peak, 
-resulting from the use of RF pulse compression [REF]. As this is much larger 
-than the 
-\(\pm 6^\circ\) range of the PFF system, only approximately a 400~ns portion of 
-the pulse can be optimally corrected. The phase sag would not be present at 
-CLIC, where in any case the drive beam pulse length is less than 400~ns.
+resulting from the use of RF pulse compression \cite{CLICCDR}. As this is much 
+larger than the \(\pm 6^\circ\) range of the PFF system, only approximately a 
+400~ns portion of the pulse can be optimally corrected. The phase sag would not 
+be present at CLIC, where in any case the drive beam pulse length is less than 
+400~ns.
 
 \begin{figure}
-	\includegraphics[width=\columnwidth]{figs/shape}% Here is how to import EPS 
-	%art
+	\includegraphics[width=\columnwidth]{figs/shape}
 	\caption{\label{fig:shape}Effect of the PFF system on intra-pulse phase 
 		variations. The pulse shape upstream (green), and downstream with the 
 		PFF 
@@ -418,10 +339,9 @@ correction is optimal, and this range is used to calculate statistics on the
 effect of the system. 
 
 \begin{figure}
-	\includegraphics[width=\columnwidth]{figs/fft}% Here is how to import 
-	%EPS art
+	\includegraphics[width=\columnwidth]{figs/fft}
 	\caption{\label{fig:fft}Amplitude of phase errors at different frequencies 
-		(\(f\)) with the PFF system off and on.}
+		(\(f\)) with the PFF system off (blue) and on (red).}
 \end{figure}
 
 In this range the PFF system flattens the phase, 
@@ -446,9 +366,7 @@ mean phase of each beam pulse is calculated across the 440~ns range in the
 central portion of the pulse, as shown before in Fig.~\ref{fig:shape}.
 
 \begin{figure}
-	\includegraphics[width=\columnwidth]{figs/meanJit}% Here is how to import 
-	%EPS 
-	%art
+	\includegraphics[width=\columnwidth]{figs/meanJit}
 	\caption{\label{fig:meanJit}Distribution of the mean downstream phase with 
 		the 
 		PFF system off (blue) and on (red).}
@@ -519,6 +437,6 @@ any future application at CLIC.
 	help and support in realising the PFF system.
 \end{acknowledgments}
 
-\bibliography{pff_short}% Produces the bibliography via BibTeX.
+\bibliography{pff_short}
 
 \end{document}
