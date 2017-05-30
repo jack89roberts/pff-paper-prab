@@ -17,7 +17,6 @@
 the 50~fs Level}
 
 \author{J.~Roberts}
-\email{Corresponding author Jack.Roberts@cern.ch}
 \affiliation{John Adams Institute (JAI), University of Oxford, Denys Wilkinson 
 Building, Keble Road, Oxford, OX1 3RH, United Kingdom}
 \affiliation{The European Organization for Nuclear Research (CERN), Geneva 23, 
@@ -175,11 +174,11 @@ used to measure the effect of the correction.
 The beam time of flight between \(\phi_1\) and \(\mathrm{K_1}\) is around 
 380~ns. The total cable delay for the PFF correction signals 
 is shorter, around 250~ns. The correction in the chicane can therefore be 
-applied to the entirety of the beam pulse measured at \(\phi_1\), the PFF 
-input, provided that the hardware latency is less than 130~ns. Significant 
-hardware challenges include the resolution and bandwidth of the phase monitors, 
-and the power, latency and bandwidth of the kicker amplifiers. A low latency 
-digitiser/feedforward controller is also required.
+applied to the entirety of the beam pulse measured at the PFF input 
+(\(\phi_1\)), provided that the hardware latency is less than 130~ns. 
+Significant hardware challenges include the resolution and bandwidth of the 
+phase monitors, and the power, latency and bandwidth of the kicker amplifiers. 
+A low latency digitiser/feedforward controller is also required.
  
 \begin{figure}
 	\includegraphics[width=\columnwidth]{figs/ctfpffLayout}% Here is 
@@ -331,8 +330,8 @@ other beamline sections. With \(R_{56, \mathrm{TL1}}=10\)~cm the
 downstream phase jitter is reduced to the same level as the upstream jitter 
 (Fig.~\ref{fig:r56Scan}). 
 However, a large second-order phase dependence on energy remained uncorrected, 
-resulting in a degradation in upstream-downstream phase correlation for large 
-drifts in beam energy.
+resulting in a degradation in upstream-downstream phase correlation if there 
+are drifts in beam energy.
 
 %\begin{equation*}
 %\sigma_{\mathrm{PFF}}^2 = \sigma_d^2 + g^2\sigma_u^2 - 
@@ -364,11 +363,12 @@ Fig.~\ref{fig:shape} shows the effect of the PFF system on the intra-pulse
 phase variations. The PFF system was operated in interleaved mode, with 
 the correction applied to alternating pulses only. This allows 
 the initial (`PFF Off') and corrected (`PFF On') downstream phase at \(\phi_3\)
-to be measured at the same time . The \(\phi_1\) (PFF input) phase 
+to be measured at the same time. The \(\phi_1\) (PFF input) phase 
 is also shown for comparison. 
 
 It is an operational feature at CTF3 that there is a roughly parabolic phase 
-sag of \(40^\circ\), resulting from the upstream RF pulse compression 
+sag of \(40^\circ\) along the pulse0, resulting from the upstream RF pulse 
+compression 
 scheme~\cite{CLICCDR}. Hence approximately a 440~ns portion of the pulse is 
 within the \(\pm 6^\circ\) dynamic range of the PFF system, and can be 
 corrected to zero nominal phase. 
@@ -459,7 +459,7 @@ correcting~from~\(1.71\pm0.07^\circ\)~to~\(0.32\pm0.01^\circ\).
 
 %%%%%%%%%%%%
 
-In conclusion, we have built, deployed and tested a prototype drive-beam phase 
+In summary, we have built, deployed and tested a prototype drive-beam phase 
 feedforward system for CLIC.   The system incorporates purpose-built 
 high-resolution phase 
 monitors, an advanced signal-processor and feedforward controller, low-latency, 
@@ -474,23 +474,41 @@ stabilise the pulse-to-pulse phase jitter to \(0.20\pm0.01^\circ\simeq\)~50 fs,
 and to simultaneously correct intra-pulse phase variations at frequencies up to 
 23~MHz.
 
-This technique offers an additional possibility for stabilising the 
+This technique offers an additional application for stabilising the 
 electron-beam arrival at FELs, where `pump-probe' 
-experiments require laser/electron synchronisation at the few femtosecond level 
-\cite{Savelyev2017}. The PFF technique requires a beam turnaround, considered 
-in some FEL designs \cite{Sekutowicz2005,Kwang2008,Jackson2016}. Our results 
-are limited by the beam-phase monitor 
-resolution of \(\simeq 30\)~fs; 5~fs resolution has been achieved with 
-electro-optic devices \cite{flashPRL} and could provide a higher precision PFF 
-input, for example.
+experiments require laser/electron synchronisation ideally to the few 
+femtosecond level, see e.g.~\cite{Savelyev2017}. 
+The current state-of-the-art in synchronisation at FELs is approx. 30~fs, using 
+all-optical techniques~\cite{FLASHnature}.
+
+Our results are limited to a similar precision by the beam arrival-time monitor 
+resolution of \(\simeq 30\)~fs, which was designed to meet the CLIC 
+requirements. In~\cite{flashPRL} a device was described, based on an 
+electro-optic bunch monitor, which was able to measure an electron-bunch 
+arrival time to approx. 6~fs. If such a device were used to provide an input to 
+a feed-forward system as described here there would be the possibility of 
+stabilising the beam arrival time to better than 10~fs, which would represent a 
+significant advance towards the desired femtosecond level. A key feature of our 
+system is that it incorporates a beam turnaround, which provides sufficient 
+beam delay to allow a feed-forward correction to be derived and applied. FELs 
+based on energy-recovery linacs (ERLs) (see e.g. 
+\cite{Sekutowicz2005,Kwang2008,Jackson2016}) intrinsically incorporate a beam 
+turnaround section that would enable the deployment of a system based on our 
+technique.
+
+In conclusion, given our demonstration of a high-precision feed-forward system, 
+beam-arrival 
+monitors with improved temporal resolution, and ERL-based FEL designs, a 
+next-generation FEL facility with femtosecond-level synchronisation capability 
+seems feasible.
 
 \begin{acknowledgments}
-	We would like to acknowledge Alessandro Zolla and Giancarlo Sensolini (INFN 
+	We acknowledge Alessandro Zolla and Giancarlo Sensolini (INFN 
 	Frascati) for the mechanical design of the phase monitors and 
 	kickers, and Alexandra Andersson, Luca Timeo and Stephane Rey (CERN) for 
-	their support on the phase monitor electronics. We also thank the 
-	operations team of CTF3 for their outstanding support. This work was 
-	financially supported by the the UK Science and Technology Facilities 
+	their support on the phase monitor electronics. We thank the 
+	operations team of CTF3 for their outstanding support. This work was  
+	supported by the the UK Science and Technology Facilities 
 	Council, and by the European Commission under the FP7 Research 
 	Infrastructures project Eu-CARD, grant agreement no. 227579.
 \end{acknowledgments}
