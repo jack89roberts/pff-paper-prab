@@ -59,8 +59,7 @@ stabilise the arrival time of a relativistic electron beam. The system was
 operated at the Compact Linear Collider (CLIC) Test Facility (CTF3) at CERN 
 where the beam arrival time was stabilised to approx. 50~fs. The system 
 latency was \(350\)~ns and the correction bandwidth \(>23\)~MHz. 
-The system meets the requirements for CLIC and could have applications at 
-future free-electron lasers.
+The system meets the requirements for CLIC.
 \end{abstract}
 
 \maketitle
@@ -344,16 +343,16 @@ system gain is unity.
 In practice the gain is chosen to achieve optimal 
 performance for real beam conditions. A representative gain scan is shown 
 in~Fig.~\ref{fig:gScan}. The optimal gain is typically in the range 
-0.9--1.3. Also shown in Fig.~\ref{fig:gScan} is the theoretical prediction of 
-the corrected phase jitter at \(\phi_3\), given the initial beam phase jitters 
-at \(\phi_1\) and 
-\(\phi_3\), the upstream-downstream phase correlation, and the gain. The 
-simulation reproduces the data.
+0.9--1.3. Also shown in Fig.~\ref{fig:gScan} is a prediction of 
+the corrected phase jitter at \(\phi_3\), using a simple model including the 
+initial beam phase jitters at \(\phi_1\) and 
+\(\phi_3\), the upstream-downstream phase correlation, and the gain 
+\cite{RobertsThesis}. The model reproduces the data.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/gScan}
 \caption{\label{fig:gScan}Measured corrected beam  phase jitter at \(\phi_3\) 
-vs. PFF gain; standard errors are shown (points). The theoretically-achieveable 
+vs. PFF gain; standard errors are shown (points). The expected 
 performance is shown by the red shaded region (see text).}
 \end{figure}
 
@@ -367,7 +366,7 @@ to be measured at the same time. The \(\phi_1\) (PFF input) phase
 is also shown for comparison. 
 
 It is an operational feature at CTF3 that there is a roughly parabolic phase 
-sag of \(40^\circ\) along the pulse0, resulting from the upstream RF pulse 
+sag of \(40^\circ\) along the pulse, resulting from the upstream RF pulse 
 compression 
 scheme~\cite{CLICCDR}. Hence approximately a 440~ns portion of the pulse is 
 within the \(\pm 6^\circ\) dynamic range of the PFF system, and can be 
@@ -474,33 +473,21 @@ stabilise the pulse-to-pulse phase jitter to \(0.20\pm0.01^\circ\simeq\)~50 fs,
 and to simultaneously correct intra-pulse phase variations at frequencies up to 
 23~MHz.
 
-This technique offers an additional application for stabilising the 
-electron-beam arrival at FELs, where `pump-probe' 
-experiments require laser/electron synchronisation ideally to the few 
-femtosecond level, see e.g.~\cite{Savelyev2017}. 
-The current state-of-the-art in synchronisation at FELs is approx. 30~fs, using 
-all-optical techniques~\cite{FLASHnature}.
-
-Our results are limited to a similar precision by the beam arrival-time monitor 
-resolution of \(\simeq 30\)~fs, which was designed to meet the CLIC 
-requirements. In~\cite{flashPRL} a device was described, based on an 
-electro-optic bunch monitor, which was able to measure an electron-bunch 
-arrival time to approx. 6~fs. If such a device were used to provide an input to 
-a feed-forward system as described here there would be the possibility of 
-stabilising the beam arrival time to better than 10~fs, which would represent a 
-significant advance towards the desired femtosecond level. A key feature of our 
-system is that it incorporates a beam turnaround, which provides sufficient 
-beam delay to allow a feed-forward correction to be derived and applied. FELs 
-based on energy-recovery linacs (ERLs) (see e.g. 
-\cite{Sekutowicz2005,Kwang2008,Jackson2016}) intrinsically incorporate a beam 
-turnaround section that would enable the deployment of a system based on our 
-technique.
-
-In conclusion, given our demonstration of a high-precision feed-forward system, 
-beam-arrival 
-monitors with improved temporal resolution, and ERL-based FEL designs, a 
-next-generation FEL facility with femtosecond-level synchronisation capability 
-seems feasible.
+Our demonstration of a beam-based arrival-time stabilisation system with a 
+performance at the 50 fs level has potential application at other beamlines 
+where a high degree of beam arrival stability is required.  For example, 
+`pump-probe' experiments at FELs require laser/electron synchronisation ideally 
+to the few femtosecond level, see e.g. \cite{Savelyev2017}. The current 
+state-of-the-art in synchronisation at FELs is approx. 30~fs, using all-optical 
+techniques \cite{FLASHnature}. Our results are limited by the beam arrival-time 
+monitor resolution of approx. 30~fs. With higher precision monitors (e.g. 
+\cite{flashPRL}) 10~fs stabilisation could be achieved with our technique. A 
+key feature of our system is that it incorporates a beam turnaround, which 
+provides sufficient beam delay to allow a feed-forward correction to be derived 
+and applied with zero effective latency. FEL designs based on energy-recovery 
+linacs (see e.g. \cite{Sekutowicz2005,Kwang2008,Jackson2016}) intrinsically 
+incorporate a beam turnaround section that would enable the deployment of a 
+high-performance system based on our technique.
 
 \begin{acknowledgments}
 	We acknowledge Alessandro Zolla and Giancarlo Sensolini (INFN 
